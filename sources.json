@@ -1,0 +1,842 @@
+[
+  {
+    "name": "airflow_sandbox",
+    "branch": "main",
+    "commit": "43cd431c6d98b053f448d7df0971d3d56641178b",
+    "url": "https://github.com/samatwa/airflow_sandbox.git",
+    "web_url": "https://github.com/samatwa/airflow_sandbox",
+    "tree": "2e620199b1374cc003e145793fa98ecf8e9af0a2",
+    "destination": "DataEngineering/airflow_sandbox",
+    "file_count": 19
+  },
+  {
+    "name": "Computer-Systems-and-Their-Fundamentals",
+    "branch": "main",
+    "commit": "136438ed72ad32ec2ccd8fe6bed68c8ca396c282",
+    "url": "https://github.com/samatwa/Computer-Systems-and-Their-Fundamentals.git",
+    "web_url": "https://github.com/samatwa/Computer-Systems-and-Their-Fundamentals",
+    "tree": "e5c5b3339c5e18900d55c19df97131855989fc2a",
+    "destination": "ComputerSystems/Computer-Systems-and-Their-Fundamentals",
+    "file_count": 123
+  },
+  {
+    "name": "dev",
+    "branch": "main",
+    "commit": "1c703edb382bc29c6d25362f117c605f78f272f2",
+    "url": "https://github.com/samatwa/dev.git",
+    "web_url": "https://github.com/samatwa/dev",
+    "tree": "eacd1752f826dafd5124e075fe89b33a38f8286b",
+    "destination": "DevOps/dev",
+    "file_count": 69
+  },
+  {
+    "name": "FinalProjectML",
+    "branch": "main",
+    "commit": "638907fb353056ef35e92ff787652c1d7f6f83ec",
+    "url": "https://github.com/samatwa/FinalProjectML.git",
+    "web_url": "https://github.com/samatwa/FinalProjectML",
+    "tree": "098ac503935e16fd3e91aa5191e6d0cda06083bc",
+    "destination": "MachineLearning/FinalProjectML",
+    "file_count": 5
+  },
+  {
+    "name": "FullStack-Web-Development-hw2",
+    "branch": "main",
+    "commit": "b4a3cd6f01fac171933beb4f222fe7901c667c23",
+    "url": "https://github.com/samatwa/FullStack-Web-Development-hw2.git",
+    "web_url": "https://github.com/samatwa/FullStack-Web-Development-hw2",
+    "tree": "c5cc13ce72670d07d0f2b28971943238f1f6503f",
+    "destination": "Python/WebDevelopment/FullStack-Web-Development-hw2",
+    "file_count": 1303
+  },
+  {
+    "name": "goit-algo-fp",
+    "branch": "main",
+    "commit": "4b60b70c10ca89d09887c26158bd9a4b51c021c3",
+    "url": "https://github.com/samatwa/goit-algo-fp.git",
+    "web_url": "https://github.com/samatwa/goit-algo-fp",
+    "tree": "0deec2cc91fafb938bbc2eaed1cbff85f5a4da10",
+    "destination": "Algorithms/goit-algo-fp",
+    "file_count": 16
+  },
+  {
+    "name": "goit-algo-hw-02",
+    "branch": "main",
+    "commit": "c63402e490d37cdb9b1b7ec41ff61316cd15a3ba",
+    "url": "https://github.com/samatwa/goit-algo-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-02",
+    "tree": "9b48e8404aa41bb6389d659f8dac7159e05df7c1",
+    "destination": "Algorithms/goit-algo-hw-02",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo-hw-03",
+    "branch": "main",
+    "commit": "182544d9d31eb744133b164ac2d2ac6e575f9641",
+    "url": "https://github.com/samatwa/goit-algo-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-03",
+    "tree": "50480b576e8d2df0728a61b42d169fbd6182dbb3",
+    "destination": "Algorithms/goit-algo-hw-03",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo-hw-04",
+    "branch": "main",
+    "commit": "8baead94b53a18d2d06c03c35ee0d76c845d94c8",
+    "url": "https://github.com/samatwa/goit-algo-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-04",
+    "tree": "968a9479583c97a135b3227cf45d09c86e404f3e",
+    "destination": "Algorithms/goit-algo-hw-04",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo-hw-05",
+    "branch": "main",
+    "commit": "261f5a5740dd1e24fb67243522a7086bfdf6e411",
+    "url": "https://github.com/samatwa/goit-algo-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-05",
+    "tree": "b3d318017a4e31f7a095fc16d04140ea597243ae",
+    "destination": "Algorithms/goit-algo-hw-05",
+    "file_count": 10
+  },
+  {
+    "name": "goit-algo-hw-06",
+    "branch": "main",
+    "commit": "7e8ad1e91e48ec75e16754225f71ac6e580e9b7d",
+    "url": "https://github.com/samatwa/goit-algo-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-06",
+    "tree": "6844c1f1db1891a0a1d1dadfb631d5691a4d571e",
+    "destination": "Algorithms/goit-algo-hw-06",
+    "file_count": 8
+  },
+  {
+    "name": "goit-algo-hw-07",
+    "branch": "main",
+    "commit": "a2dae4f7fe2cb06757bc820d6c5637c9efa2c238",
+    "url": "https://github.com/samatwa/goit-algo-hw-07.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-07",
+    "tree": "8b7f39f6f58c399fc546d829bf6fd2aac4f9a3e8",
+    "destination": "Algorithms/goit-algo-hw-07",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo-hw-08",
+    "branch": "main",
+    "commit": "b02479db536582ba10f2f80980ab2ab353c81197",
+    "url": "https://github.com/samatwa/goit-algo-hw-08.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-08",
+    "tree": "09bc6c6de01cdc376f9bc296d78ac3ea2151bace",
+    "destination": "Algorithms/goit-algo-hw-08",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo-hw-09",
+    "branch": "main",
+    "commit": "cff780c4d792ff126727715e8445f921ddcc3207",
+    "url": "https://github.com/samatwa/goit-algo-hw-09.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-09",
+    "tree": "b9f32af3837cba2fa6b0df55aded53c91981c515",
+    "destination": "Algorithms/goit-algo-hw-09",
+    "file_count": 4
+  },
+  {
+    "name": "goit-algo-hw-10",
+    "branch": "main",
+    "commit": "b7d8546d09cdf121d20bd035c4c1bcf05f8851b4",
+    "url": "https://github.com/samatwa/goit-algo-hw-10.git",
+    "web_url": "https://github.com/samatwa/goit-algo-hw-10",
+    "tree": "055a902341983e6dc8a48aa5d03fbd970dd7fa12",
+    "destination": "Algorithms/goit-algo-hw-10",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo2-hw-01",
+    "branch": "main",
+    "commit": "9e4bdc5c7e26c4ff157bf008ef3335a7687b45f0",
+    "url": "https://github.com/samatwa/goit-algo2-hw-01.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-01",
+    "tree": "d66a0760a3cccb03c4d308ea932eb27cd53c67d1",
+    "destination": "Algorithms/goit-algo2-hw-01",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo2-hw-02",
+    "branch": "main",
+    "commit": "acf24151a0ba8fa393efeed7ae6ef30de6653c89",
+    "url": "https://github.com/samatwa/goit-algo2-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-02",
+    "tree": "6cb6ed67075a8d86b8eacd42478f93e39903e3a2",
+    "destination": "Algorithms/goit-algo2-hw-02",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo2-hw-03",
+    "branch": "main",
+    "commit": "2c0b48b0afdd68ef26f7d777e0c1c4946647ee3b",
+    "url": "https://github.com/samatwa/goit-algo2-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-03",
+    "tree": "da2ab4e6c4b6966a6f07d4d31e8010550f492951",
+    "destination": "Algorithms/goit-algo2-hw-03",
+    "file_count": 9
+  },
+  {
+    "name": "goit-algo2-hw-04",
+    "branch": "main",
+    "commit": "da597ce8338c9d9ded8c48b269024a9f2278d7e8",
+    "url": "https://github.com/samatwa/goit-algo2-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-04",
+    "tree": "f9293af39cecf4232cf93914bae4cf62a592c13e",
+    "destination": "Algorithms/goit-algo2-hw-04",
+    "file_count": 7
+  },
+  {
+    "name": "goit-algo2-hw-05",
+    "branch": "main",
+    "commit": "cc7178542297bd55d780be1d4fe97098a075d939",
+    "url": "https://github.com/samatwa/goit-algo2-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-05",
+    "tree": "62de81f92a07dea871437e9b2481657220c346fc",
+    "destination": "Algorithms/goit-algo2-hw-05",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo2-hw-06",
+    "branch": "main",
+    "commit": "01a80e22cdd0a4925dff8406f2c85050b31cb0ac",
+    "url": "https://github.com/samatwa/goit-algo2-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-06",
+    "tree": "1c4c53b0e880e32f86b7cb6c3f997fee2a25b248",
+    "destination": "Algorithms/goit-algo2-hw-06",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo2-hw-07",
+    "branch": "main",
+    "commit": "9ec29ab237d09880287d635b17bd81fcdadf4d75",
+    "url": "https://github.com/samatwa/goit-algo2-hw-07.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-07",
+    "tree": "3361f58b5b9fb7371bfc41004bff39538067178a",
+    "destination": "Algorithms/goit-algo2-hw-07",
+    "file_count": 7
+  },
+  {
+    "name": "goit-algo2-hw-08",
+    "branch": "main",
+    "commit": "bd80a3c637cd3ea3d1857abd37f9ccfda8d6390e",
+    "url": "https://github.com/samatwa/goit-algo2-hw-08.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-08",
+    "tree": "6babaa2e2cd61f5a51413c09dab00c8547bd3bcb",
+    "destination": "Algorithms/goit-algo2-hw-08",
+    "file_count": 6
+  },
+  {
+    "name": "goit-algo2-hw-09",
+    "branch": "main",
+    "commit": "c66169e15a7027bb238fec06071ac74e59105af4",
+    "url": "https://github.com/samatwa/goit-algo2-hw-09.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-09",
+    "tree": "2d4448f5f6892a80f1c2229d1ed959574fc9b817",
+    "destination": "Algorithms/goit-algo2-hw-09",
+    "file_count": 5
+  },
+  {
+    "name": "goit-algo2-hw-10",
+    "branch": "main",
+    "commit": "d93cd1dbf59603c309eae8ec73ab87bbc39c486a",
+    "url": "https://github.com/samatwa/goit-algo2-hw-10.git",
+    "web_url": "https://github.com/samatwa/goit-algo2-hw-10",
+    "tree": "88aaa01f62d65446676e4264042918a5f25b10b8",
+    "destination": "Algorithms/goit-algo2-hw-10",
+    "file_count": 7
+  },
+  {
+    "name": "goit-argo",
+    "branch": "master",
+    "commit": "55956187ba33b5aa6f54e7403c6b35ae5abf5c26",
+    "url": "https://github.com/samatwa/goit-argo.git",
+    "web_url": "https://github.com/samatwa/goit-argo",
+    "tree": "e22252ecca356767bfa0c56a1aa2229de42cbdc1",
+    "destination": "DevOps/goit-argo",
+    "file_count": 9
+  },
+  {
+    "name": "GoIT-Core",
+    "branch": "main",
+    "commit": "a077d4fe54dddd99e06347b98d96938f0dd54897",
+    "url": "https://github.com/samatwa/GoIT-Core.git",
+    "web_url": "https://github.com/samatwa/GoIT-Core",
+    "tree": "265dcf2773cbde85bcc973b95991dc6c3bd5c798",
+    "destination": "Python/Basics/GoIT-Core",
+    "file_count": 50
+  },
+  {
+    "name": "goit-cs-hw-01",
+    "branch": "main",
+    "commit": "1cea09e74beaad3a40abbc51e3a9c4937a0fcaff",
+    "url": "https://github.com/samatwa/goit-cs-hw-01.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-01",
+    "tree": "916df2b29f731464ba4350c56cfa392059cda7a7",
+    "destination": "ComputerSystems/goit-cs-hw-01",
+    "file_count": 5
+  },
+  {
+    "name": "goit-cs-hw-02",
+    "branch": "main",
+    "commit": "ec873a892efa32aeb0120f5f478569cdbe44082c",
+    "url": "https://github.com/samatwa/goit-cs-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-02",
+    "tree": "2f02a0dcf578b7f2e8c913f4d501a45dac3c99ec",
+    "destination": "ComputerSystems/goit-cs-hw-02",
+    "file_count": 13
+  },
+  {
+    "name": "goit-cs-hw-03",
+    "branch": "main",
+    "commit": "e9039abbd1ada80668f627519d6fc71a336501c2",
+    "url": "https://github.com/samatwa/goit-cs-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-03",
+    "tree": "9d765cead211d9a89b1d704252e9aa5cb7fb586f",
+    "destination": "ComputerSystems/goit-cs-hw-03",
+    "file_count": 9
+  },
+  {
+    "name": "goit-cs-hw-04",
+    "branch": "main",
+    "commit": "f3d369ff5a121fa069e7e2d49280892644bc236a",
+    "url": "https://github.com/samatwa/goit-cs-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-04",
+    "tree": "d6019aa5c600ace33210e5b0e8c5ef3fb78d2f37",
+    "destination": "ComputerSystems/goit-cs-hw-04",
+    "file_count": 9
+  },
+  {
+    "name": "goit-cs-hw-05",
+    "branch": "main",
+    "commit": "24d2cd7fc08ef377e7d5102e8770cf2b08bca701",
+    "url": "https://github.com/samatwa/goit-cs-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-05",
+    "tree": "4efb81680c607c74430a923ec62f62fe114df365",
+    "destination": "ComputerSystems/goit-cs-hw-05",
+    "file_count": 5
+  },
+  {
+    "name": "goit-cs-hw-06",
+    "branch": "main",
+    "commit": "81150337fc79e1539079f22b854accb30dc08d70",
+    "url": "https://github.com/samatwa/goit-cs-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-cs-hw-06",
+    "tree": "f96251bd5d866ea2b2a7f192ad620f8c3ba6ddd7",
+    "destination": "ComputerSystems/goit-cs-hw-06",
+    "file_count": 13
+  },
+  {
+    "name": "goit-de-fp",
+    "branch": "main",
+    "commit": "5fb253df227f71ad83c4349c26db3bdef598ac96",
+    "url": "https://github.com/samatwa/goit-de-fp.git",
+    "web_url": "https://github.com/samatwa/goit-de-fp",
+    "tree": "fab6a9b355ce09d36da99b6b2328eca97a32e887",
+    "destination": "DataEngineering/goit-de-fp",
+    "file_count": 246
+  },
+  {
+    "name": "goit-de-hw-03",
+    "branch": "main",
+    "commit": "1aeaae4a3501b8ff358daa6d135718d788e464b1",
+    "url": "https://github.com/samatwa/goit-de-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-de-hw-03",
+    "tree": "df7c8a2bd791418c4d239a44a163dbf68cafa10c",
+    "destination": "DataEngineering/goit-de-hw-03",
+    "file_count": 5
+  },
+  {
+    "name": "goit-de-hw-04",
+    "branch": "main",
+    "commit": "1ed8ea1d3d1fa9ea1c68afcdaa70fef302cc29fa",
+    "url": "https://github.com/samatwa/goit-de-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-de-hw-04",
+    "tree": "9d91bb0cc0afd47e6dc26691d22abf63d013b8fc",
+    "destination": "DataEngineering/goit-de-hw-04",
+    "file_count": 35
+  },
+  {
+    "name": "goit-de-hw-05",
+    "branch": "master",
+    "commit": "bb1c71c480f116e15a649ffb72e96d7ec3b95d8e",
+    "url": "https://github.com/samatwa/goit-de-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-de-hw-05",
+    "tree": "8bf419dd6d487cb4c32ccfc46aefd2eb11f27b78",
+    "destination": "DataEngineering/goit-de-hw-05",
+    "file_count": 18
+  },
+  {
+    "name": "goit-de-hw-06",
+    "branch": "master",
+    "commit": "6a422053201f7cbbb8c0fb5dfba6514401cd0a76",
+    "url": "https://github.com/samatwa/goit-de-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-de-hw-06",
+    "tree": "d6e8d9ee24822c1afa63a180b83d68dcd8dbe340",
+    "destination": "DataEngineering/goit-de-hw-06",
+    "file_count": 13
+  },
+  {
+    "name": "goit-de-hw-07",
+    "branch": "main",
+    "commit": "6de1e1e0cf40accf7ef8d2a832b3e47e7bd04177",
+    "url": "https://github.com/samatwa/goit-de-hw-07.git",
+    "web_url": "https://github.com/samatwa/goit-de-hw-07",
+    "tree": "cd8135c875af6ef1d4921b1d5d9524875dfa3f4b",
+    "destination": "DataEngineering/goit-de-hw-07",
+    "file_count": 21
+  },
+  {
+    "name": "goit-js-hw-01",
+    "branch": "main",
+    "commit": "e32fe677da6d8fd80fb3a9b4d2465d2553586ccf",
+    "url": "https://github.com/samatwa/goit-js-hw-01.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-01",
+    "tree": "9e349db1531b9bd52fc25052339d67097239466e",
+    "destination": "JavaScript/goit-js-hw-01",
+    "file_count": 7
+  },
+  {
+    "name": "goit-js-hw-02",
+    "branch": "main",
+    "commit": "4c7722893594bb52f408ea0cbbed4601ae701cde",
+    "url": "https://github.com/samatwa/goit-js-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-02",
+    "tree": "98dceecd5f893442784ea9c5f59727fe96687d6b",
+    "destination": "JavaScript/goit-js-hw-02",
+    "file_count": 8
+  },
+  {
+    "name": "goit-js-hw-03",
+    "branch": "main",
+    "commit": "f8afb5f3d56acb9b4b91e2cd6d3954d05bed1764",
+    "url": "https://github.com/samatwa/goit-js-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-03",
+    "tree": "8ff12af54d0711a2563ee7a8f32ecd70468b2448",
+    "destination": "JavaScript/goit-js-hw-03",
+    "file_count": 7
+  },
+  {
+    "name": "goit-js-hw-04",
+    "branch": "main",
+    "commit": "913eee7fad725130033bfc8ddd7a8ef3e6103803",
+    "url": "https://github.com/samatwa/goit-js-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-04",
+    "tree": "152dcbe7cac41365fb5a49ab48fdd35fcd779278",
+    "destination": "JavaScript/goit-js-hw-04",
+    "file_count": 7
+  },
+  {
+    "name": "goit-js-hw-05",
+    "branch": "main",
+    "commit": "253b956c85e95f8b7d3981ad075f5b3c218e4dcf",
+    "url": "https://github.com/samatwa/goit-js-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-05",
+    "tree": "c961641bcdeb11f6d61106e4e13f0f6ce79ecf0d",
+    "destination": "JavaScript/goit-js-hw-05",
+    "file_count": 8
+  },
+  {
+    "name": "goit-js-hw-06",
+    "branch": "main",
+    "commit": "eb001a4818484e57ca33781b891de4172174eb13",
+    "url": "https://github.com/samatwa/goit-js-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-06",
+    "tree": "fe4cf619e50eeecd66b1cbd7e4129ecdf1581fd5",
+    "destination": "JavaScript/goit-js-hw-06",
+    "file_count": 7
+  },
+  {
+    "name": "goit-js-hw-07",
+    "branch": "main",
+    "commit": "1354c645c6b620d9215dd64e89fc27a5441caebb",
+    "url": "https://github.com/samatwa/goit-js-hw-07.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-07",
+    "tree": "e619eda61570304bd8782357eb6162a29bb9ac29",
+    "destination": "JavaScript/goit-js-hw-07",
+    "file_count": 17
+  },
+  {
+    "name": "goit-js-hw-08",
+    "branch": "main",
+    "commit": "03cc6b36fdf6fe165ce5b0244729702301daadb8",
+    "url": "https://github.com/samatwa/goit-js-hw-08.git",
+    "web_url": "https://github.com/samatwa/goit-js-hw-08",
+    "tree": "27a4b28723f5269a6cf46462bd3a61b7aff982f1",
+    "destination": "JavaScript/goit-js-hw-08",
+    "file_count": 6
+  },
+  {
+    "name": "goit-markup-hw-01",
+    "branch": "main",
+    "commit": "8f22cc96323b02e624ff992207130484dcd74900",
+    "url": "https://github.com/samatwa/goit-markup-hw-01.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-01",
+    "tree": "8c70cf972be36dab27d6c0848209ee95b463c17f",
+    "destination": "HTML-CSS/goit-markup-hw-01",
+    "file_count": 10
+  },
+  {
+    "name": "goit-markup-hw-02",
+    "branch": "main",
+    "commit": "25aa1e1841a9f84a75d94750e9da451b4d4fe3ce",
+    "url": "https://github.com/samatwa/goit-markup-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-02",
+    "tree": "61c3150151d5337d6007adfb8deadf48ca25ed2e",
+    "destination": "HTML-CSS/goit-markup-hw-02",
+    "file_count": 17
+  },
+  {
+    "name": "goit-markup-hw-03",
+    "branch": "main",
+    "commit": "a8cbd1773386685dbb9ce67dac2e7bdd8454a1d5",
+    "url": "https://github.com/samatwa/goit-markup-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-03",
+    "tree": "5997bfe75572b376ded34a3c153ec6603ee71349",
+    "destination": "HTML-CSS/goit-markup-hw-03",
+    "file_count": 17
+  },
+  {
+    "name": "goit-markup-hw-04",
+    "branch": "main",
+    "commit": "0245104ec3ce2726ab95beca77ea20c8749dc77a",
+    "url": "https://github.com/samatwa/goit-markup-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-04",
+    "tree": "6e288389f05f08409add5024511f103119959bbb",
+    "destination": "HTML-CSS/goit-markup-hw-04",
+    "file_count": 19
+  },
+  {
+    "name": "goit-markup-hw-05",
+    "branch": "main",
+    "commit": "afa7bc2f14aa04ce57144e9ce704052cc4319369",
+    "url": "https://github.com/samatwa/goit-markup-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-05",
+    "tree": "a5e2241e5a223ba44e48b9b4cb6dc1a0e0409399",
+    "destination": "HTML-CSS/goit-markup-hw-05",
+    "file_count": 19
+  },
+  {
+    "name": "goit-markup-hw-06",
+    "branch": "main",
+    "commit": "97622fbafee7b2ce5567a2d01d874e54149fffba",
+    "url": "https://github.com/samatwa/goit-markup-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-markup-hw-06",
+    "tree": "e6d5d96e85375455e32c9239810eda4b1c1a8cd9",
+    "destination": "HTML-CSS/goit-markup-hw-06",
+    "file_count": 62
+  },
+  {
+    "name": "goit-neo-react-extra-hw",
+    "branch": "main",
+    "commit": "47fcbb0dc1c74d26e061e95113a6b410d929474b",
+    "url": "https://github.com/samatwa/goit-neo-react-extra-hw.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-extra-hw",
+    "tree": "246355c6a23f909915c92c3876848909a180d014",
+    "destination": "React/goit-neo-react-extra-hw",
+    "file_count": 56
+  },
+  {
+    "name": "goit-neo-react-hw-module1",
+    "branch": "main",
+    "commit": "871fe286634c39faefd22a74e8ac1e76338ff31a",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module1.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module1",
+    "tree": "034fa44c6171c0128347eb6d3953c8e372fa1d70",
+    "destination": "React/goit-neo-react-hw-module1",
+    "file_count": 24
+  },
+  {
+    "name": "goit-neo-react-hw-module2",
+    "branch": "main",
+    "commit": "66804ce7e2e41c82eb31b8176fe2af9e81418257",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module2.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module2",
+    "tree": "00d0ede2ba9bfe10188e007b6f861ce771d57d87",
+    "destination": "React/goit-neo-react-hw-module2",
+    "file_count": 21
+  },
+  {
+    "name": "goit-neo-react-hw-module3",
+    "branch": "main",
+    "commit": "4a94f897706fbc16b21082ba47cd96d671e4e516",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module3.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module3",
+    "tree": "6290c91d64254a6fe67b7e8fef794c92d6277daf",
+    "destination": "React/goit-neo-react-hw-module3",
+    "file_count": 22
+  },
+  {
+    "name": "goit-neo-react-hw-module4",
+    "branch": "main",
+    "commit": "d1de490298076861bd3b58f0a521bd7f635eccf6",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module4.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module4",
+    "tree": "b72ea105284b03dd0f397cabe2d4fcefb37b9ce7",
+    "destination": "React/goit-neo-react-hw-module4",
+    "file_count": 27
+  },
+  {
+    "name": "goit-neo-react-hw-module5",
+    "branch": "main",
+    "commit": "dffbaa798f32fbb5b2dffb1564c03970e59226a1",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module5.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module5",
+    "tree": "6c8ab00b7a04302d78cb37a2a027061b23f0241e",
+    "destination": "React/goit-neo-react-hw-module5",
+    "file_count": 32
+  },
+  {
+    "name": "goit-neo-react-hw-module6",
+    "branch": "main",
+    "commit": "62563cfe89b31b6cf72050629c0580073c5ad2ba",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module6.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module6",
+    "tree": "d18d9c034517396c8739a4415a622f0631fa71a4",
+    "destination": "React/goit-neo-react-hw-module6",
+    "file_count": 26
+  },
+  {
+    "name": "goit-neo-react-hw-module7",
+    "branch": "main",
+    "commit": "851d4a5e347fbb7d13d5d34ef38ac69ffde2ba06",
+    "url": "https://github.com/samatwa/goit-neo-react-hw-module7.git",
+    "web_url": "https://github.com/samatwa/goit-neo-react-hw-module7",
+    "tree": "8503ee004041fd5d1fdc3df0ef91e3310240dc64",
+    "destination": "React/goit-neo-react-hw-module7",
+    "file_count": 27
+  },
+  {
+    "name": "goit-node-cli",
+    "branch": "main",
+    "commit": "6fea7cb43fe4eee69bbacc9d7e758d53e8ae91cb",
+    "url": "https://github.com/samatwa/goit-node-cli.git",
+    "web_url": "https://github.com/samatwa/goit-node-cli",
+    "tree": "925004097c48c445fb5b58c5fc9200ccf3a0044b",
+    "destination": "NodeJS/goit-node-cli",
+    "file_count": 8
+  },
+  {
+    "name": "goit-node-rest-api",
+    "branch": "main",
+    "commit": "2c2a03927d3cafa6c35f5a76440cef6070efab1d",
+    "url": "https://github.com/samatwa/goit-node-rest-api.git",
+    "web_url": "https://github.com/samatwa/goit-node-rest-api",
+    "tree": "48eb6089e8cbf48a80de2f7073efd044b02058d5",
+    "destination": "NodeJS/goit-node-rest-api",
+    "file_count": 36
+  },
+  {
+    "name": "goit-pythonweb-hw-01",
+    "branch": "main",
+    "commit": "1911604222fa4c5129d67a9ebaeb4559d37941cf",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-01.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-01",
+    "tree": "d3c2091faeee6443e3f8a35955b572b0c52e4e66",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-01",
+    "file_count": 6
+  },
+  {
+    "name": "goit-pythonweb-hw-012",
+    "branch": "main",
+    "commit": "b3a20b3d2a5785aba0846e2ae8a54e7e3aea74b1",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-012.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-012",
+    "tree": "7aacec0619a4818eee66a00a12471042082612fb",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-012",
+    "file_count": 50
+  },
+  {
+    "name": "goit-pythonweb-hw-03",
+    "branch": "main",
+    "commit": "6920e2094e64082e3ee29cb29a5b7e9089cd5d86",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-03",
+    "tree": "028411aa8115af8b27593ead8d28bcd4fb9e282c",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-03",
+    "file_count": 15
+  },
+  {
+    "name": "goit-pythonweb-hw-04",
+    "branch": "main",
+    "commit": "674da058badcba15df4ecb79cb9978fe3c16ae6f",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-04",
+    "tree": "0f1582a34cc144a9ed7f311f787f9ac3ebdc6d80",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-04",
+    "file_count": 13
+  },
+  {
+    "name": "goit-pythonweb-hw-06",
+    "branch": "main",
+    "commit": "4ff252fb6c6cc10ffa35478a9bb2d42434a942b8",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-06.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-06",
+    "tree": "67507d5a944a5f18eb04b33ba270a09bc4dd24d7",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-06",
+    "file_count": 17
+  },
+  {
+    "name": "goit-pythonweb-hw-08",
+    "branch": "main",
+    "commit": "60065d5b0d0c4c8eeaffdb8bdac91dc64684a357",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-08.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-08",
+    "tree": "8ee67641b978ec6e767d35379a33f1d7e94f2ecd",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-08",
+    "file_count": 19
+  },
+  {
+    "name": "goit-pythonweb-hw-10",
+    "branch": "main",
+    "commit": "8e8c9d9de7f1f1c2241391cefdca72e65eb84cfb",
+    "url": "https://github.com/samatwa/goit-pythonweb-hw-10.git",
+    "web_url": "https://github.com/samatwa/goit-pythonweb-hw-10",
+    "tree": "1765cbc40d0419dbf0220663a7baaaab736658e2",
+    "destination": "Python/WebDevelopment/goit-pythonweb-hw-10",
+    "file_count": 31
+  },
+  {
+    "name": "goit-rdb-fp",
+    "branch": "main",
+    "commit": "dcc07151f8c6b02abfd7a5d0c9846b032732bc78",
+    "url": "https://github.com/samatwa/goit-rdb-fp.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-fp",
+    "tree": "400eb5ec71e5ae9f53c7522007d9a754da344d05",
+    "destination": "Databases/goit-rdb-fp",
+    "file_count": 14
+  },
+  {
+    "name": "goit-rdb-hw-02",
+    "branch": "main",
+    "commit": "2a90e6140e6a52e8726d147db1133c58bf4f6fb3",
+    "url": "https://github.com/samatwa/goit-rdb-hw-02.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-hw-02",
+    "tree": "3696f26db780368f1c05e478e91bf79cab7f160d",
+    "destination": "Databases/goit-rdb-hw-02",
+    "file_count": 6
+  },
+  {
+    "name": "goit-rdb-hw-03",
+    "branch": "main",
+    "commit": "5ebc875861f6b0f5ef2f438ff322a309c1835240",
+    "url": "https://github.com/samatwa/goit-rdb-hw-03.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-hw-03",
+    "tree": "59a81ca5ec09ac09001818845bf53d899cea6681",
+    "destination": "Databases/goit-rdb-hw-03",
+    "file_count": 9
+  },
+  {
+    "name": "goit-rdb-hw-04",
+    "branch": "main",
+    "commit": "dd9c71613a673cf143d041f69f19cba72ca42b5b",
+    "url": "https://github.com/samatwa/goit-rdb-hw-04.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-hw-04",
+    "tree": "174e0ca7ffd90e0cc8829ca33a87eafce71bda5c",
+    "destination": "Databases/goit-rdb-hw-04",
+    "file_count": 13
+  },
+  {
+    "name": "goit-rdb-hw-05",
+    "branch": "main",
+    "commit": "dc513cc4dd7ac691a76ee91df0e41dccd9a5d2d9",
+    "url": "https://github.com/samatwa/goit-rdb-hw-05.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-hw-05",
+    "tree": "75165fdaeb88d01f7f6dc4bd249f2892c657f807",
+    "destination": "Databases/goit-rdb-hw-05",
+    "file_count": 9
+  },
+  {
+    "name": "goit-rdb-hw-07",
+    "branch": "main",
+    "commit": "43ec4a695ca21588b6e1a24fa600f4330b68f5c3",
+    "url": "https://github.com/samatwa/goit-rdb-hw-07.git",
+    "web_url": "https://github.com/samatwa/goit-rdb-hw-07",
+    "tree": "dac7b5b8a164748d6c93576be74b1dd44cf1eee8",
+    "destination": "Databases/goit-rdb-hw-07",
+    "file_count": 8
+  },
+  {
+    "name": "goitneo-python-hw-1-group_1",
+    "branch": "main",
+    "commit": "628400d0eb979d19639f4c2bd3101bdd55ca6066",
+    "url": "https://github.com/samatwa/goitneo-python-hw-1-group_1.git",
+    "web_url": "https://github.com/samatwa/goitneo-python-hw-1-group_1",
+    "tree": "05068c97f1679de8643fa745b993bb921dbb489c",
+    "destination": "Python/Basics/goitneo-python-hw-1-group_1",
+    "file_count": 8
+  },
+  {
+    "name": "goitneo-python-hw-2-group_1",
+    "branch": "main",
+    "commit": "f6b8c11d20b6e4032dfc96ed022d95e2bfb61bd9",
+    "url": "https://github.com/samatwa/goitneo-python-hw-2-group_1.git",
+    "web_url": "https://github.com/samatwa/goitneo-python-hw-2-group_1",
+    "tree": "b0aea4e7f8eef3cca0477de486b90ffadc8cc5ec",
+    "destination": "Python/Basics/goitneo-python-hw-2-group_1",
+    "file_count": 2
+  },
+  {
+    "name": "goitneo-python-hw-3-group_1",
+    "branch": "main",
+    "commit": "1f9ac8042fcf5e2b839da8edf130c746705b9ee1",
+    "url": "https://github.com/samatwa/goitneo-python-hw-3-group_1.git",
+    "web_url": "https://github.com/samatwa/goitneo-python-hw-3-group_1",
+    "tree": "b2560e9aad6481610c01847bff9079274014fe49",
+    "destination": "Python/Basics/goitneo-python-hw-3-group_1",
+    "file_count": 1
+  },
+  {
+    "name": "lesson-09",
+    "branch": "main",
+    "commit": "8beffc1a02c48662c5c1461b36333323505f063e",
+    "url": "https://github.com/samatwa/lesson-09.git",
+    "web_url": "https://github.com/samatwa/lesson-09",
+    "tree": "1ab05ca7daecf1d66f93a9d087f9ad7e525212d3",
+    "destination": "DevOps/lesson-09",
+    "file_count": 3
+  },
+  {
+    "name": "ml-ops",
+    "branch": "main",
+    "commit": "9440e8d1b2db7644629ff2996d4d468ed642dcc2",
+    "url": "https://github.com/samatwa/ml-ops.git",
+    "web_url": "https://github.com/samatwa/ml-ops",
+    "tree": "9c720a9b1eb5dae4710f5031c895ac287e4cd4fa",
+    "destination": "MLOps/ml-ops",
+    "file_count": 34
+  },
+  {
+    "name": "my-react-project",
+    "branch": "main",
+    "commit": "fbbb50243d71b5e26e3fbc11bb8b0ad1ac065b39",
+    "url": "https://github.com/samatwa/my-react-project.git",
+    "web_url": "https://github.com/samatwa/my-react-project",
+    "tree": "5bc2ad99a48f7095008cda29971ad9e0ab2e92cf",
+    "destination": "React/my-react-project",
+    "file_count": 35
+  },
+  {
+    "name": "my-vite-project",
+    "branch": "main",
+    "commit": "c98073038eb73f1da00e6b42d5ad88f9483afcb2",
+    "url": "https://github.com/samatwa/my-vite-project.git",
+    "web_url": "https://github.com/samatwa/my-vite-project",
+    "tree": "0bdca0653fa7d2a3c3ac7d77fd9d463d1a8dbdd0",
+    "destination": "JavaScript/my-vite-project",
+    "file_count": 20
+  },
+  {
+    "name": "vkuznetsov-capstone-project",
+    "branch": "master",
+    "commit": "4a320894938bd9c48ee1e56c50ce05451b660c65",
+    "url": "https://github.com/samatwa/vkuznetsov-capstone-project.git",
+    "web_url": "https://github.com/samatwa/vkuznetsov-capstone-project",
+    "tree": "de09258980d3ba5bf4e6ed9608068320c5f668b4",
+    "destination": "DeepLearning/vkuznetsov-capstone-project",
+    "file_count": 13
+  }
+]

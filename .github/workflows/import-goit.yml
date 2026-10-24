@@ -1,0 +1,20 @@
+name: Import GoIT Projects
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/import-goit.yml
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure commit author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Import and verify pinned source snapshots
+        run: python tools/import_goit.py --push
