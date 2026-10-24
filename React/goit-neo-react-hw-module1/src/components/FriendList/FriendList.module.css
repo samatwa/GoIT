@@ -1,0 +1,43 @@
+.friendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 16px;
+  width: 120px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 8px;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+}
+
+.friendItem img {
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.friendItem p {
+  margin: 4px 0;
+}
+
+.statusOnline {
+  color: green;
+  font-size: 16px;
+}
+
+.statusOffline {
+  color: red;
+  font-size: 16px;
+}
+
+.friendList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16px;
+}

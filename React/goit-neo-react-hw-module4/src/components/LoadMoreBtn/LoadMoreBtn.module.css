@@ -1,0 +1,15 @@
+.loadMore {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loadMore:hover {
+  background-color: #1565c0;
+}

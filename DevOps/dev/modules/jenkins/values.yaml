@@ -1,0 +1,143 @@
+persistence:
+  enabled: true
+  existingClaim: jenkins
+
+serviceAccount:
+  name: jenkins-sa
+  create: false
+
+controller:
+  admin:
+    username: admin
+    password: admin123
+
+  serviceType: LoadBalancer
+  servicePort: 80
+  service:
+    port: 80
+    targetPort: 8080
+
+  csrf:
+    defaultCrumbIssuer:
+      enabled: false
+
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+
+  probes:
+    startupProbe:
+      failureThreshold: 30
+      httpGet:
+        path: "/login"
+        port: 8080
+      periodSeconds: 10
+      timeoutSeconds: 5
+    livenessProbe:
+      failureThreshold: 10
+      httpGet:
+        path: "/login"
+        port: 8080
+      periodSeconds: 10
+      timeoutSeconds: 5
+      initialDelaySeconds: 30
+    readinessProbe:
+      failureThreshold: 10
+      httpGet:
+        path: "/login"
+        port: 8080
+      periodSeconds: 10
+      timeoutSeconds: 5
+      initialDelaySeconds: 30
+
+  additionalExistingSecrets:
+    - name: github-credentials
+      keyName: username
+    - name: github-credentials
+      keyName: password
+
+  installPlugins:
+    - kubernetes:latest
+    - workflow-aggregator:latest
+    - git:latest
+    - configuration-as-code:latest
+    - credentials-binding:latest
+    - github:latest
+    - docker-plugin:latest
+    - docker-workflow:latest
+    - job-dsl:latest
+
+  JCasC:
+    enabled: true
+    configScripts:
+      security: |
+        security:
+          globalJobDslSecurityConfiguration:
+            useScriptSecurity: false
+      credentials: |
+        credentials:
+          system:
+            domainCredentials:
+              - credentials:
+                  - usernamePassword:
+                      scope: GLOBAL
+                      id: github-token
+                      username: "$${github-credentials-username}"
+                      password: "$${github-credentials-password}"
+                      description: "GitHub PAT from K8s secret"
+      env: |
+        jenkins:
+          globalNodeProperties:
+            - envVars:
+                env:
+                  - key: ECR_REPOSITORY_URL
+                    value: ${ecr_url}
+                  - key: DB_HOST
+                    value: ${db_host}
+                  - key: DB_NAME
+                    value: ${db_name}
+                  - key: DB_USER
+                    value: ${db_user}
+                  - key: DB_PASSWORD
+                    value: ${db_password}
+      jobs: |
+        jobs:
+          - script: >
+              job('seed-job') {
+                description('Job to generate pipeline for Django project')
+                scm {
+                  git {
+                    remote {
+                      url('https://github.com/samatwa/dev.git')
+                      credentials('github-token')
+                    }
+                    branches('*/final-project')
+                  }
+                }
+                steps {
+                  dsl {
+                    text('''
+                      pipelineJob("goit-django-docker") {
+                        definition {
+                          cpsScm {
+                            scm {
+                              git {
+                                remote {
+                                  url("https://github.com/samatwa/dev.git")
+                                  credentials("github-token")
+                                }
+                                branches("*/final-project")
+                              }
+                            }
+                            scriptPath("Django/Jenkinsfile")
+                          }
+                        }
+                      }
+                    ''')
+                  }
+                }
+              }

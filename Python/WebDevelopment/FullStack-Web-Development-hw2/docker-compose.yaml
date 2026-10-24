@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:12
+    container_name: postgres-db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  web:
+    build: .
+    container_name: fastapi-app
+    command: >
+      uvicorn main:app --host 0.0.0.0 --port ${PORT} --reload
+    volumes:
+      - .:/app
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:

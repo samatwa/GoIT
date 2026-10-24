@@ -1,0 +1,14 @@
+.optionsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 0px;
+}
+
+.button, .resetButton {
+  font-size: 14px;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  background-color: #f4f4f4;
+}

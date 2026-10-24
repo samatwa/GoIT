@@ -1,0 +1,151 @@
+applications:
+  - name: django-app
+    namespace: default
+    project: default
+    source:
+      repoURL: "https://github.com/samatwa/dev.git"
+      path: "charts/django-app" 
+      targetRevision: final-project
+      helm:
+        valueFiles:
+          - values.yaml
+    destination:
+      server: "https://kubernetes.default.svc"
+      namespace: default
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+
+  - name: prometheus
+    namespace: monitoring
+    project: default
+    source:
+      repoURL: "https://prometheus-community.github.io/helm-charts"
+      chart: prometheus
+      targetRevision: 28.7.0
+      helm:
+        values: |
+          server:
+            global:
+              external_labels:
+                cluster: kubernetes
+            persistentVolume:
+              enabled: true
+              size: 10Gi
+          alertmanager:
+            enabled: true
+            persistentVolume:
+              enabled: true
+              size: 2Gi
+          serverFiles:
+            alerting_rules.yml:
+              groups:
+                - name: django-alerts
+                  rules:
+                    - alert: DjangoHighCpuUsage
+                      expr: sum(rate(container_cpu_usage_seconds_total{container="django"}[5m])) by (pod) > 0.4
+                      for: 2m
+                      labels:
+                        severity: critical
+                      annotations:
+                        summary: "High CPU usage on pod {{ $labels.pod }}"
+                        description: "Django pod {{ $labels.pod }} is using more than 40% CPU for 2 minutes."
+                    - alert: DjangoDown
+                      expr: up{job="django"} == 0
+                      for: 1m
+                      labels:
+                        severity: critical
+                      annotations:
+                        summary: "Django service is down"
+                        description: "All Django pods are down."
+          kubeStateMetrics:
+            enabled: true
+          extraScrapeConfigs: |
+            - job_name: 'django'
+              kubernetes_sd_configs:
+                - role: pod
+              relabel_configs:
+                - action: keep
+                  regex: true
+                  source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+                - action: replace
+                  replacement: django
+                  target_label: service
+                - action: replace
+                  replacement: django
+                  target_label: app
+                - action: replace
+                  source_labels: [__meta_kubernetes_namespace]
+                  target_label: namespace
+                - action: replace
+                  source_labels: [__meta_kubernetes_pod_name]
+                  target_label: pod
+            - job_name: 'kube-state-metrics'
+              static_configs:
+                - targets: ['prometheus-kube-state-metrics.monitoring.svc.cluster.local:8080']
+            - job_name: 'kubernetes-nodes-custom'
+              scheme: https
+              tls_config:
+                ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+                insecure_skip_verify: true
+              bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+              kubernetes_sd_configs:
+                - role: node
+              relabel_configs:
+                - action: labelmap
+                  regex: __meta_kubernetes_node_label_(.+)
+                - target_label: __address__
+                  replacement: kubernetes.default.svc:443
+                - source_labels: [__meta_kubernetes_node_name]
+                  regex: (.+)
+                  target_label: __metrics_path__
+                  replacement: /api/v1/nodes/${1}/proxy/metrics
+            - job_name: 'kubernetes-nodes-cadvisor-custom'
+              scheme: https
+              tls_config:
+                ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+                insecure_skip_verify: true
+              bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+              kubernetes_sd_configs:
+                - role: node
+              relabel_configs:
+                - action: labelmap
+                  regex: __meta_kubernetes_node_label_(.+)
+                - target_label: __address__
+                  replacement: kubernetes.default.svc:443
+                - source_labels: [__meta_kubernetes_node_name]
+                  regex: (.+)
+                  target_label: __metrics_path__
+                  replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+                - action: replace
+                  source_labels: [__meta_kubernetes_node_name]
+                  target_label: node
+    destination:
+      server: "https://kubernetes.default.svc"
+      namespace: monitoring
+
+  - name: grafana
+    namespace: monitoring
+    project: default
+    source:
+      repoURL: "https://grafana.github.io/helm-charts"
+      chart: grafana
+      targetRevision: 8.5.0
+      helm:
+        values: |
+          adminPassword: admin
+          service:
+            type: LoadBalancer
+          datasources:
+            datasources.yaml:
+              apiVersion: 1
+              datasources:
+              - name: Prometheus
+                type: prometheus
+                url: http://prometheus-server.monitoring.svc.cluster.local
+                access: proxy
+                isDefault: true
+    destination:
+      server: "https://kubernetes.default.svc"
+      namespace: monitoring

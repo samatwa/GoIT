@@ -1,0 +1,25 @@
+replicaCount: 2
+
+image:
+  repository: 794038256039.dkr.ecr.eu-north-1.amazonaws.com/final-project-ecr
+  tag: v1.0.5
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+config:
+  DJANGO_DEBUG: "False"
+  DJANGO_ALLOWED_HOSTS: "*"
+  DB_ENGINE: django_prometheus.db.backends.postgresql
+  DB_NAME: myapp
+  DB_USER: postgres
+  DB_PASSWORD: admin123456
+  DB_HOST: myapp-db.cxcam6yy6qp1.eu-north-1.rds.amazonaws.com
+  DB_PORT: "5432"
+
+autoscaler:
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70

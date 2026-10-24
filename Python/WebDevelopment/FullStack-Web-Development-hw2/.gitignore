@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# dotenv
+.env
+
+# Docker volumes
+postgres_data/
+
+# IDE/editor settings
+.vscode/
+.idea/

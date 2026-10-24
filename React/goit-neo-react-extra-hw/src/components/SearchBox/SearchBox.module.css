@@ -1,0 +1,15 @@
+/* SearchBox */
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.inputField {
+  max-width: 420px;
+}
+
+.inputField .MuiOutlinedInput-root {
+  padding: 0;
+  border-radius: 5px;
+}

@@ -1,0 +1,127 @@
+pipeline {
+  agent {
+    kubernetes {
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  serviceAccountName: jenkins-sa
+  containers:
+    - name: python
+      image: python:3.11-slim
+      command:
+        - sleep
+      args:
+        - 99d
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:v1.16.0-debug
+      command:
+        - sleep
+      args:
+        - 99d
+    - name: trivy
+      image: aquasec/trivy:latest
+      command:
+        - sleep
+      args:
+        - 99d
+    - name: git
+      image: alpine/git
+      command:
+        - sleep
+      args:
+        - 99d
+"""
+    }
+  }
+
+  environment {
+    ECR_REGISTRY = "794038256039.dkr.ecr.eu-north-1.amazonaws.com"
+    IMAGE_NAME   = "final-project-ecr"
+    IMAGE_TAG    = "v1.0.${BUILD_NUMBER}"
+
+    AWS_REGION   = "eu-north-1"
+
+    COMMIT_EMAIL = "jenkins@localhost"
+    COMMIT_NAME  = "jenkins"
+  }
+
+  stages {
+
+    stage('Unit Tests') {
+      steps {
+        container('python') {
+          sh '''
+            cd Django
+            pip install -r requirements.txt
+            python manage.py test
+          '''
+        }
+      }
+    }
+
+    stage('Security Scan (Code & Deps)') {
+      steps {
+        container('python') {
+          sh '''
+            pip install bandit safety
+            bandit -r Django/
+            safety check -r Django/requirements.txt || true
+          '''
+        }
+      }
+    }
+
+    stage('Build & Push Image (Kaniko → ECR)') {
+      steps {
+        container('kaniko') {
+          sh '''
+            /kaniko/executor \
+              --context $WORKSPACE/Django \
+              --dockerfile $WORKSPACE/Django/Dockerfile \
+              --destination=$ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG \
+              --cache=true
+          '''
+        }
+      }
+    }
+
+    stage('Security Scan (Image)') {
+      steps {
+        container('trivy') {
+          sh "trivy image --severity HIGH,CRITICAL $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
+        }
+      }
+    }
+
+    stage('Update Helm values.yaml (GitOps)') {
+      steps {
+        container('git') {
+          withCredentials([
+            usernamePassword(
+              credentialsId: 'github-token',
+              usernameVariable: 'GIT_USERNAME',
+              passwordVariable: 'GIT_PAT'
+            )
+          ]) {
+            sh '''
+              git clone https://$GIT_USERNAME:$GIT_PAT@github.com/samatwa/dev.git
+              cd dev
+              git checkout final-project
+              cd charts/django-app
+
+              sed -i "s|tag: .*|tag: $IMAGE_TAG|" values.yaml
+
+              git config user.email "$COMMIT_EMAIL"
+              git config user.name "$COMMIT_NAME"
+
+              git add values.yaml
+              git commit -m "ci: update image tag to $IMAGE_TAG"
+              git push origin final-project
+            '''
+          }
+        }
+      }
+    }
+  }
+}

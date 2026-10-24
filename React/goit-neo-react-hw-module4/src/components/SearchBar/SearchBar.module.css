@@ -1,0 +1,31 @@
+.searchHeader {
+  background-color: #283593;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.searchIcon {
+  color: #888;
+  font-size: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}

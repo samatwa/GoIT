@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mlflow
+  namespace: infra-tools
+  
+  # опционально, чтобы ArgoCD при удалении подчистил ресурсы:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://community-charts.github.io/helm-charts
+    chart: mlflow
+    targetRevision: 1.6.2
+    helm:
+      releaseName: mlflow
+      valuesObject:
+        # Сервис для MLflow UI
+        service:
+          type: ClusterIP
+          port: 5000
+
+        # Встроенную auth отключаем
+        auth:
+          enabled: false
+
+        # Бэкенд-хранилище: внешний PostgreSQL (Bitnami chart)
+        backendStore:
+          databaseMigration: true       # можно включить, чтобы чар сам прогнал миграции
+          databaseConnectionCheck: true # проверка коннекта перед стартом
+          postgres:
+            enabled: true
+            host: mlflow-postgres-postgresql.application.svc.cluster.local
+            port: 5432
+            database: mlflow
+            user: mlflow
+            password: mlflowpass
+
+        # Хранилище артефактов: MinIO как S3-совместимое хранилище
+        artifactRoot:
+          s3:
+            enabled: true
+            bucket: mlflow-artifacts
+            # можно оставить пустыми, если будешь использовать IAM/Secret,
+            # но для простоты укажем напрямую:
+            awsAccessKeyId: minio
+            awsSecretAccessKey: minio123
+
+        # Доп. переменные окружения для MinIO
+        extraEnvVars:
+          MLFLOW_S3_ENDPOINT_URL: "http://minio.application.svc.cluster.local:9000"
+          MLFLOW_S3_IGNORE_TLS: "true"   # если без TLS
+
+        # Если нужно, можно добавить статический префикс, ingress и т.п. позже
+        # extraArgs:
+        #   staticPrefix: /mlflow
+
+  destination:
+    namespace: application
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true

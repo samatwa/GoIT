@@ -1,0 +1,11 @@
+.authNavLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: bold;
+  color: #2a363b;
+}
+
+.authNavLink.active {
+  color: #e84a5f;
+}
