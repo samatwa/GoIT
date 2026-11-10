@@ -1,6 +1,6 @@
 # NodeJS
-
-| Project | Source history |
-| --- | --- |
-| [goit-node-cli](goit-node-cli/) | [Original repository](https://github.com/samatwa/goit-node-cli) |
-| [goit-node-rest-api](goit-node-rest-api/) | [Original repository](https://github.com/samatwa/goit-node-rest-api) |
+ 
+| Project | Preserved history |
+|---|---|
+| [goit-node-cli](goit-node-cli/) | [History](https://github.com/samatwa/GoIT/tree/archive/goit-node-cli/main) |
+| [goit-node-rest-api](goit-node-rest-api/) | [History](https://github.com/samatwa/goit-node-rest-api) |

@@ -1,6 +1,5 @@
 # FinalProjectML
 
-Видалив стовпці з єдиним значенням або лише з пропусками, застосував OneHotEncoder до категоріальних ознак, балансування за допомогою SMOTE, XGBClassifier, оптимізація гіперпараметрів за допомогою RandomizedSearchCV, використав оптимальний порогу для класифікації optimal_threshold.
+The workflow removes constant and entirely missing columns, applies `OneHotEncoder` to categorical features, balances classes with SMOTE, trains `XGBClassifier`, tunes hyperparameters with `RandomizedSearchCV` and selects an `optimal_threshold` for classification.
 
-Фінальній результат Kaggle (public/privat): 0.8449/0.8450.
- 
+Recorded Kaggle scores: **0.8449 public / 0.8450 private**.

@@ -1,7 +1,8 @@
 # goit-algo-hw-04
- 
-Висновки, які ми можемо зробити за результатами task_1: 
-1. Ефективність із збільшенням розміру масиву: Зі збільшенням розміру масиву також зростає час виконання всіх трьох алгоритмів сортування. Проте цей приріст більш помітний у випадку сортування вставками порівняно з об'єднуючим сортуванням та Timsort. Це через те, що сортування вставками має складність часу O(n^2), що робить його менш ефективним для великих наборів даних.
-2. Об'єднуюче сортування проти сортування вставками: Об'єднуюче сортування постійно виявляється ефективнішим за сортування вставками на всіх перевірених розмірах масиву. Це очікувано, оскільки у об'єднуючого сортування складність часу O(n log n), що робить його більш ефективним, особливо для великих наборів даних. Сортування вставками, зі складністю часу O(n^2), стає все менш ефективним по мірі зростання розміру масиву.
-3. Ефективність Timsort: Timsort постійно демонструє перевагу порівняно з об'єднуючим сортуванням та сортуванням вставками на всіх перевірених розмірах масиву. Це особливо помітно для великих розмірів масиву, де адаптивність та оптимізації Timsort роблять його найбільш ефективним. Здатність Timsort адаптуватися до характеристик реальних даних дозволяє йому перевершувати традиційні алгоритми сортування в багатьох випадках.
-4. Практична рекомендація: На основі цих результатів Timsort виходить найбільш ефективним алгоритмом сортування серед перевірених, особливо для реальних сценаріїв, де характеристики даних можуть варіюватися. Однак, якщо простота реалізації є пріоритетом, а обсяг даних невеликий, об'єднуюче сортування може бути розумним вибором. Сортування вставками, хоча й просте для реалізації, зазвичай не рекомендується для великих наборів даних через його погану ефективність.
+
+## Conclusions from task_1
+
+1. **Scaling with array size.** All three sorting algorithms take longer as the array grows. Insertion sort grows more sharply because its time complexity is O(n²).
+2. **Merge sort versus insertion sort.** Merge sort was consistently faster at the tested sizes. Its O(n log n) complexity makes it more suitable for large inputs.
+3. **Timsort.** Timsort outperformed both alternatives in these measurements, particularly on larger arrays. Its adaptive behavior and optimizations help with real-world data.
+4. **Practical choice.** Timsort was the strongest option in this benchmark. Merge sort is a reasonable alternative when an explicit, relatively simple implementation is required. Insertion sort is simple but unsuitable for large inputs.

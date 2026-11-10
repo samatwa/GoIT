@@ -1,20 +1,17 @@
 # goit-de-hw-07
 
-# 1. Delay = 35 sec
-![alt text](./ScreenShots/graph_failed.png) 
-## Сенсор упав по тайм-ауту, бо ми навмисно в generate_delay поставив sleep(35) — а сенсор мав встигнути перевірити запис протягом 30 секунд.
-Отже:
-  * Сенсор відпрацював як треба
-  * DAG перевірив затримку коректно
-  * Вся логіка спрацювала
+## 1. Delay = 35 seconds
 
-# 2. Delay = 10 sec
-![alt text](./ScreenShots/graph_success.png)
-## Сенсор пройшов успішно.
-Отже:
-  * Запис у таблиці viacheslav.medal_results був не старший за 30 секунд
-  * time.sleep(10) відпрацював
-  * SqlSensor встиг перевірити свіже значення і повернув True
+![Expected sensor timeout](./ScreenShots/graph_failed.png)
 
-# 3. MySQL Workbench
-![alt text](./ScreenShots/mysql_workbench.png)  
+The sensor timed out because `generate_delay` deliberately used `sleep(35)`, while the record had to be checked within 30 seconds. This demonstrates the expected timeout behavior and DAG delay check.
+
+## 2. Delay = 10 seconds
+
+![Successful sensor run](./ScreenShots/graph_success.png)
+
+The sensor succeeded: the record in `viacheslav.medal_results` was no more than 30 seconds old. After `time.sleep(10)`, `SqlSensor` found the fresh value and returned `True`.
+
+## 3. MySQL Workbench
+
+![Database results](./ScreenShots/mysql_workbench.png)

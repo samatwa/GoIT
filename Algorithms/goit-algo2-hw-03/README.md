@@ -1,75 +1,38 @@
 # goit-algo2-hw-03
 
-# Task 1. Застосування алгоритму максимального потоку для логістики товарів
- 
-### **Алгоритм:** Едмондса-Карпа  
-### **Мережа:** Термінали → Склади → Магазини  
-### **Кількість вузлів:** 22 (20 реальних + супер-джерело + супер-стік)  
-### **Максимальний потік:** **115 одиниць**
+## Task 1: maximum flow for goods logistics
 
-## Таблиця потоків між терміналами та магазинами
+- Algorithm: Edmonds–Karp.
+- Network: terminals → warehouses → stores.
+- Vertices: 22, including 20 physical nodes, a super-source and a super-sink.
+- Maximum flow: **115 units**.
 
-| Термінал   | Магазин    | Фактичний Потік (одиниць) |
+### Terminal-to-store flows
+
+| Terminal   | Store    | Actual flow (units) |
 |:-----------|:-----------|--------------------------:|
-| Термінал 1 | Магазин 1  |                        15 |
-| Термінал 1 | Магазин 2  |                        10 |
-| Термінал 1 | Магазин 4  |                        15 |
-| Термінал 1 | Магазин 5  |                         5 |
-| Термінал 1 | Магазин 7  |                        15 |
-| Термінал 2 | Магазин 10 |                        20 |
-| Термінал 2 | Магазин 11 |                        10 |
-| Термінал 2 | Магазин 5  |                         5 |
-| Термінал 2 | Магазин 6  |                         5 |
-| Термінал 2 | Магазин 7  |                         5 |
-| Термінал 2 | Магазин 8  |                        10 |
+| Terminal 1 | Store 1  |                        15 |
+| Terminal 1 | Store 2  |                        10 |
+| Terminal 1 | Store 4  |                        15 |
+| Terminal 1 | Store 5  |                         5 |
+| Terminal 1 | Store 7  |                        15 |
+| Terminal 2 | Store 10 |                        20 |
+| Terminal 2 | Store 11 |                        10 |
+| Terminal 2 | Store 5  |                         5 |
+| Terminal 2 | Store 6  |                         5 |
+| Terminal 2 | Store 7  |                         5 |
+| Terminal 2 | Store 8  |                        10 |
 
-## Аналітика
+### Analysis
 
-### 1. Які термінали забезпечують найбільший потік товарів до магазинів?
-- **Термінал 1**: 60 одиниць
-- **Термінал 2**: 55 одиниць  
-**Висновок:** Термінал 1 забезпечив найбільший обсяг доставки.
+Terminal 1 supplied 60 units and Terminal 2 supplied 55 units, so Terminal 1 delivered the larger total.
 
-### 2. Які маршрути мають найменшу пропускну здатність і як це впливає на загальний потік?
-- **Найменші пропускні здатності:**
-  - Склад 2 → Магазин 5: 10
-  - Склад 4 → Магазин 13: 5
-  - Склад 1 → Магазин 2: 10
+The lowest-capacity routes include Warehouse 2 → Store 5 (10 units), Warehouse 4 → Store 13 (5 units), and Warehouse 1 → Store 2 (10 units). These constraints create bottlenecks.
 
-**Висновок:** Ці обмеження створюють «вузькі місця» в мережі та перешкоджають повній реалізації потужностей терміналів.
+Stores 3, 9, 12, 13 and 14 received no goods in the reported solution. Increasing relevant capacities or adding alternative warehouse routes could improve their supply.
 
-### 3. Які магазини отримали найменше товарів і чи можна збільшити їх постачання?
-- **Магазини без постачання:**  
-  Магазин 3, Магазин 9, Магазин 12, Магазин 13, Магазин 14
+Other limitations include the number of warehouse exits, heavy Terminal 2 traffic through Warehouse 4, and missing direct routes to some stores. Potential improvements are additional warehouse-to-store routes, more terminal-to-warehouse links, and better-balanced flows.
 
-**Рекомендація:** Збільшити пропускні здатності відповідних маршрутів або додати нові шляхи через інші склади.
+## Task 2: OOBTree versus dictionary range queries
 
-### 4. Чи є вузькі місця, які можна усунути для покращення ефективності логістичної мережі?
-- Обмежена кількість виходів зі складів.
-- Склад 4 перевантажений потоком із Терміналу 2.
-- Відсутність прямих маршрутів до частини магазинів.
-
-**Рекомендації:**
-- Розширити мережу доставки зі складів до магазинів.
-- Додати канали між іншими терміналами та складами.
-- Збалансувати потоки для уникнення перевантаження окремих вузлів.
-
-# Task 2. Порівняння ефективності OOBTree і словника для діапазонних запитів
-
-## Ключові висновки:
-
-### Вибір структури даних залежить від характеру запитів:
-
-- Для діапазонних запитів за атрибутом, який не є ключем, потрібно створити відповідний індекс.
-
-### OOBTree ефективний для діапазонних запитів:
-
-- Але тільки якщо діапазонний пошук відбувається за ключем, за яким відсортована структура.
-
-### Оптимізація має бути цілеспрямованою:
-
-- Розуміння характеру даних та запитів дозволяє вибрати найефективніший підхід.
-
-### Важливість практичних тестів:
-
-- Теоретичні очікування щодо продуктивності структур даних потрібно підтверджувати експериментами.
+The appropriate structure depends on the query. A range query on an attribute other than the key needs an appropriate index. OOBTree is effective when the range concerns its ordered key. Optimize for the actual data and query pattern, and confirm theoretical expectations with measurements.

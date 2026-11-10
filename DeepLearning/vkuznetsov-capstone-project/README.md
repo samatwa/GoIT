@@ -1,79 +1,60 @@
-# Capstone Project: Дослідження функцій активації
+# Capstone project: activation-function research
 
-Цей проєкт порівнює 9 функцій активації на 2 архітектурах глибокого навчання:
-- **ResNet-34** на **CIFAR-10** (Комп'ютерний зір)
-- **Transformer Encoder** на **AG News** (NLP / Обробка природної мови)
+This project compares nine activation functions on two deep-learning architectures:
 
-## Вимоги
+- **ResNet-34** on **CIFAR-10** for computer vision.
+- **Transformer Encoder** on **AG News** for natural-language processing.
 
-Встановіть залежності:
+## Requirements
+
 ```bash
 pip install -r requirements.txt
 ```
 
-## Структура Проєкту
+## Project structure
 
-- `activations.py`: Користувацькі функції активації (Mish, Swish тощо) та реєстр.
-- `models/`: Містить визначення моделей (`resnet.py`, `transformer.py`).
-- `data.py`: Скрипти завантаження та попередньої обробки даних.
-- `train_utils.py`: Цикл навчання, розрахунок метрик (Пам'ять, Точність).
-- `main.py`: Головний скрипт для запуску всіх 18 експериментів.
-- `analyze_results.py`: Аналіз результатів, генерація зведених таблиць та графіків Trade-off (точність vs час).
-- `plot_learning_curves.py`: Побудова графіків динаміки навчання (Learning Curves) по епохах.
+| Path | Purpose |
+|---|---|
+| `activations.py` | Custom activations, including Mish and Swish, and their registry |
+| `models/` | ResNet and Transformer definitions in `resnet.py` and `transformer.py` |
+| `data.py` | Dataset loading and preprocessing |
+| `train_utils.py` | Training loop and memory/accuracy metrics |
+| `main.py` | Entry point for all 18 experiments |
+| `analyze_results.py` | Summary tables and accuracy/time trade-off plots |
+| `plot_learning_curves.py` | Per-epoch learning curves |
 
-## Запуск Експериментів
+## Run experiments
 
-Щоб запустити повний набір експериментів:
 ```bash
 python main.py
 ```
 
-Це виконає такі дії:
-1. Завантажить датасети (CIFAR-10, AG News).
-2. Навчить моделі, використовуючи **фіксований поділ Train/Validation/Test (90% Train, 10% Val від офіційного тренувального набору, плюс офіційний тестовий набір)**.
-3. Навчатиме протягом **30 епох** для кожного експерименту
-4. Збереже контрольні точки (checkpoints) у `checkpoints/` та детальні результати у `results/`.
-5. Використовує фіксований random seed (`42`) для повної відтворюваності.
+The run downloads CIFAR-10 and AG News, uses a fixed split of 90% training and 10% validation from each official training set plus its official test set, and trains each experiment for 30 epochs. Checkpoints are saved to `checkpoints/` and detailed outputs to `results/`. The configured random seed is 42.
 
-## Аналіз та Візуалізація
+## Analysis and visualization
 
-Після завершення навчання (або за наявності файлу `results/final_experiment_results.csv`) ви можете запустити скрипти для аналізу:
+After training, or when `results/final_experiment_results.csv` is available:
 
-### 1. Зведені таблиці та Trade-off графіки
 ```bash
 python analyze_results.py
 ```
-- Генерує таблиці з найкращими результатами (сортування за Val Acc).
-- Будує графік "Trade-off: Найкраща Val Accuracy vs Час на епоху".
 
-### 2. Динаміка навчання (Learning Curves)
+This produces tables sorted by validation accuracy and a plot of best validation accuracy versus time per epoch.
+
 ```bash
 python plot_learning_curves.py
 ```
-- Будує графіки зміни точності та втрат протягом епох для всіх функцій активації.
 
-Всі графіки зберігаються у папці `results/`.
+This plots accuracy and loss over epochs for every activation. All plots are saved in `results/`.
 
-## Метрики
-- Точність (Accuracy)
-- Втрати на валідації (Validation Loss)
-- Час навчання (Training Time)
-- Норма градієнта (Gradient Norm)
-- Пікове використання пам'яті GPU (Peak GPU Memory Usage)
+## Metrics
 
-## Порівнювані Функції Активації
-- ReLU
-- LeakyReLU
-- ELU
-- SELU
-- GELU
-- Swish
-- Mish
-- Hardswish
-- Softplus
+Accuracy, validation loss, training time, gradient norm and peak GPU memory usage.
 
-## Примітки
-- Переконайтеся, що CUDA доступна для швидшого навчання.
-- Змініть `batch_size` у `main.py`, якщо виникають помилки OOM (недостатньо пам'яті).
-- Random seeds зафіксовані на значенні `42` у `main.py` та `train_utils.py`.
+## Compared activations
 
+ReLU, LeakyReLU, ELU, SELU, GELU, Swish, Mish, Hardswish and Softplus.
+
+## Notes
+
+CUDA accelerates training when available. Reduce `batch_size` in `main.py` if GPU memory is insufficient. Seeds are set to 42 in `main.py` and `train_utils.py`; hardware and execution settings can still affect reproducibility.

@@ -1,10 +1,8 @@
 # goit-algo2-hw-07
 
+## Fibonacci benchmark: LRU cache versus splay tree
 
-## Графік порівняння часу виконання для LRU Cache та Splay Tree:
-![alt text](Screenshot.png)
-
-## Таблиця, яка містить значення n, середній час виконання для LRU Cache та Splay Tree: 
+![Execution-time comparison](Screenshot.png)
 
 | n   | LRU Cache Time (s)  | Splay Tree Time (s) |
 |-----|---------------------|---------------------|
@@ -20,27 +18,8 @@
 | 450 | 0.0000058200        | 0.0001960400        |
 | 500 | 0.0000075000        | 0.0002200400        |
 
+The LRU-cache implementation was substantially faster in this experiment. Most recorded `fibonacci_lru(n)` calls remained around 5–7 microseconds, with a higher value around n = 350. CPython's `@lru_cache` efficiently memoizes recursive calls.
 
+The splay-tree implementation became slower as n increased: approximately 21 μs at n = 50, 115 μs at n = 250, and 220 μs at n = 500. Lookup and insertion require tree rotations even when a value has already been calculated.
 
-# Висновки:
-## На основі отриманої таблиці часу виконання для обчислення чисел Фібоначчі можна зробити такі висновки щодо ефективності підходів LRU Cache та Splay Tree:
-
-1. LRU Cache значно швидший
-- Час виконання для fibonacci_lru(n) залишається стабільно низьким (~5–7 мікросекунд), навіть при великих n (до 500).
-- Це пов’язано з тим, що @lru_cache реалізовано на рівні CPython і дуже ефективно працює з мемоізацією рекурсивних викликів.
-
-2. Splay Tree суттєво повільніший
-- Час зростає приблизно лінійно із збільшенням n.\
-Наприклад:
-  * при n = 50: ≈ 21 μs
-  * при n = 250: ≈ 112 μs
-  * при n = 500: ≈ 220 μs
-- Це пояснюється тим, що вставка і пошук у дереві вимагають додаткових операцій ротації (splay), навіть якщо значення вже було обчислено.
-
-3. Якщо потрібна максимальна швидкодія — LRU Cache є безумовно кращим вибором.
-- Splay Tree — гнучкіша структура, яка корисна тоді, коли:
-  * ключі нечислові або складні;
-  * потрібно динамічно змінювати кеш;
-  * важливий сам механізм "часто використовувані ближче до кореня".
-- Для обчислення чисел Фібоначчі Splay Tree програє по продуктивності.
-
+For this Fibonacci workload, the LRU cache is the better performance choice. A splay tree offers different flexibility: complex keys, dynamic cache changes, and keeping frequently accessed keys near the root.

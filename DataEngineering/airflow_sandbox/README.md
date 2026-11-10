@@ -1,140 +1,72 @@
-### Покрокова інструкція для роботи з репозиторієм
+# Airflow sandbox
 
----
+## Clone and authenticate
 
-#### 1. Клонування репозиторію
-
-Першим кроком є клонування репозиторію на ваш локальний комп’ютер. Для цього виконайте команду в терміналі:
+The upstream exercise originated in `goitacademy/airflow_sandbox`. This copy is maintained within the GoIT collection. Clone the collection and work in this project directory:
 
 ```bash
-git clone https://github.com/goitacademy/airflow_sandbox.git
+git clone https://github.com/samatwa/GoIT.git
+cd GoIT/DataEngineering/airflow_sandbox
 ```
 
----
+Use Git Credential Manager or another configured Git credential helper for authenticated pushes. Keep access tokens out of remote URLs and committed files.
 
-#### 2. Налаштування URL для `git push`
+## Encrypt files
 
-Після клонування потрібно змінити URL для відправки змін у репозиторій, додавши ваш особистий токен. Це дозволить автентифікувати ваші дії під час `git push`:
+Place the input file in the project working directory, then use the included public key:
 
-```bash
-git remote set-url origin https://<TOKEN>@github.com/goitacademy/airflow_sandbox.git
-```
-
-> [!WARNING]
-> **Примітка:** Замість `<TOKEN>` підставте ваш - ==дізнайтесь у викладача/ментора== 
-
----
-
-#### 3. Підготовка файлів до шифрування
-
-Перед тим як додавати файли до репозиторію, їх потрібно зашифрувати. Виконайте наступне:
-
-1. **Помістіть файл, який потрібно зашифрувати**, у робочу директорію вашого проєкту.
-    
-2. Використайте скрипт для шифрування:
-    
 ```bash
 ./encrypt_and_archive.sh file_name public_key.pem
 ```
-    
-    - `file_name` — назва вашого файлу.
-    - `public_key.pem` — ключ, що додається до репозиторію.
 
+On PowerShell:
 
-Or with **PowerShell**
-```PowerShell
+```powershell
 .\encrypt_and_archive.ps1 -InputFile "path_to_file" -PublicKey "path_to_public_key.pem"
 ```
 
-3. У результаті буде створено зашифрований архів із назвою `file_name_tar.gz`.
-    
-4. **Перемістіть зашифрований файл до папки `encrypted_file`:**
-    
+Here `file_name` is the input file and `public_key.pem` is the provided public key. Move the resulting encrypted archive into `encrypted_file/`. The original exercise used this example archive name:
+
 ```bash
 mv file_name_tar.gz encrypted_file/
 ```
-    
 
----
+## Commit changes
 
-#### 4. Додавання, комітування та пуш змін
+From the project directory:
 
-Після шифрування файлів необхідно додати їх до репозиторію, створити коміт та запушити зміни:
-
-1. Додаємо всі зміни до `staging area`:
-    
 ```bash
 git add encrypted_file/
-```
-    
-2. Створюємо коміт із описом внесених змін:
-    
-```bash
-git commit -m "Шифрування файлів та додавання до репозиторію."
-```
-    
-3. Відправляємо зміни в віддалений репозиторій:
-    
-```bash
+git commit -m "Encrypt files and add the archive"
 git push
 ```
-    
-    Або використовуйте команду з токеном:
-    
-```bash
-git push https://<TOKEN>@github.com/goitacademy/airflow_sandbox.git
-```
 
+The nested historical workflow is retained as course material. GitHub does not run workflows from this nested directory automatically.
 
----
+## Resolve conflicts
 
-#### 5. Розв’язання можливих конфліктів
+Pull the current collection branch before editing:
 
-Якщо під час `git push` виникає помилка через конфлікт із віддаленим репозиторієм, виконайте наступні кроки:
-
-1. **Отримайте останні зміни з репозиторію:**
-    
 ```bash
 git pull origin main
 ```
-    
-2. **Вирішіть конфлікти:**
-    
-    - Відкрийте файли, що мають конфлікти. У таких файлах ви побачите секції на зразок:
-        
-```
+
+If a file has conflict markers, reconcile the two versions:
+
+```text
 <<<<<<< HEAD
-Ваші зміни
+Your changes
 =======
-Зміни у віддаленому репозиторії
+Remote changes
 >>>>>>> commit_id
 ```
-        
-    - Видаліть зайві рядки та залиште коректний код.
-3. **Додайте виправлені файли:**
+
+Remove the markers after keeping the correct content, then stage and commit:
 
 ```bash
-git add <ім'я_файлу>
-```
-    
-4. **Створіть коміт із виправленням:**
-    
-```bash
-git commit -m "Вирішення конфліктів"
-```
-    
-5. **Спробуйте запушити зміни ще раз:**
-    
-```bash
+git add <file_name>
+git commit -m "Resolve conflicts"
 git push
 ```
-    
 
----
-
-#### 6. Перевірка успішності
-
-Після завершення роботи переконайтеся, що ваші зміни успішно відображаються в репозиторії. Ви можете перевірити це через веб-інтерфейс GitHub.
-
-> [!WARNING]
-> **Порада:** Завжди виконуйте `git pull` перед початком роботи з репозиторієм, щоб уникати конфліктів.
+Verify the resulting commit and files on GitHub.

@@ -1,60 +1,59 @@
-# DevOps Final Project: AWS Cloud Infrastructure & GitOps
+# DevOps final project: AWS cloud infrastructure and GitOps
 
-Цей проєкт представляє собою повний цикл розгортання хмарної інфраструктури в AWS за допомогою **Terraform** та реалізацію GitOps-процесів з використанням **Argo CD**, **Jenkins** та стеку моніторингу (**Prometheus** & **Grafana**).
+Terraform provisions AWS infrastructure, while Argo CD and Jenkins implement GitOps and CI/CD. Prometheus and Grafana provide monitoring.
 
-## Архітектура проекту
+## Architecture
 
-Проєкт складається з наступних ключових компонентів:
-- **VPC**: Мережева інфраструктура з публічними та приватними підмережами.
-- **EKS**: Managed Kubernetes кластер для запуску сервісів.
-- **RDS (Aurora/PostgreSQL)**: Керована база даних.
-- **ECR**: Репозиторій для Docker-образів.
-- **Jenkins**: CI/CD інструмент для автоматизації збірки.
-- **Argo CD**: GitOps оператор для автоматичного деплою додатків.
-- **Prometheus & Grafana**: Повний стек моніторингу та візуалізації метрик.
+- VPC with public and private subnets.
+- EKS managed Kubernetes cluster.
+- RDS or Aurora PostgreSQL database.
+- ECR container-image registry.
+- Jenkins build automation.
+- Argo CD application deployment.
+- Prometheus and Grafana metrics and visualization.
 
-## Структура репозиторію
+## Repository structure
 
 ```text
 Project/
 │
-├── main.tf               # Головний файл для підключення модулів
-├── backend.tf            # Налаштування бекенду для стейтів (S3 + DynamoDB)
-├── outputs.tf            # Загальні виводи ресурсів та команди доступу
+├── main.tf
+├── backend.tf
+├── outputs.tf
 │
-├── modules/              # Каталог з усіма модулями інфраструктури
-│  ├── s3-backend/        # Модуль для S3 та DynamoDB (Terraform State)
+├── modules/
+│  ├── s3-backend/
 │  │  ├── s3.tf
 │  │  ├── dynamodb.tf
 │  │  ├── variables.tf
 │  │  └── outputs.tf
 │  │
-│  ├── vpc/               # Мережа AWS (VPC, Subnets, Routing)
+│  ├── vpc/
 │  │  ├── vpc.tf
 │  │  ├── routes.tf
 │  │  ├── variables.tf
 │  │  └── outputs.tf
 │  │
-│  ├── ecr/               # Docker Registry для образів додатка
+│  ├── ecr/
 │  │  ├── ecr.tf
 │  │  ├── variables.tf
 │  │  └── outputs.tf
 │  │
-│  ├── eks/               # Kubernetes кластер та EBS CSI Driver
+│  ├── eks/
 │  │  ├── eks.tf
 │  │  ├── aws_ebs_csi_driver.tf
 │  │  ├── node.tf
 │  │  ├── variables.tf
 │  │  └── outputs.tf
 │  │
-│  ├── rds/               # База даних (Aurora або RDS Instance)
+│  ├── rds/
 │  │  ├── rds.tf
 │  │  ├── aurora.tf
 │  │  ├── shared.tf
 │  │  ├── variables.tf
 │  │  └── outputs.tf
 │  │ 
-│  ├── jenkins/           # Автоматизація CI/CD (Helm)
+│  ├── jenkins/
 │  │  ├── jenkins.tf
 │  │  ├── Jenkinsfile
 │  │  ├── variables.tf
@@ -62,118 +61,106 @@ Project/
 │  │  ├── values.yaml
 │  │  └── outputs.tf
 │  │ 
-│  └── argo_cd/           # GitOps та моніторинг (Helm + App-of-Apps)
+│  └── argo_cd/
 │    ├── argocd.tf
 │    ├── variables.tf
 │    ├── providers.tf
 │    ├── values.yaml
 │    ├── outputs.tf
-│    └── charts/          # Внутрішній чарт для розгортання додатків
+│    └── charts/
 │      ├── Chart.yaml
-│      ├── values.yaml    # Опис Prometheus, Grafana, Django App
+│      ├── values.yaml
 │      └── templates/
 │        ├── application.yaml
 │        ├── repository.yaml
 │        └── prometheus-extra-rbac.yaml
 │
-├── charts/               # Helm чарти додатків
-│  └── django-app/        # Маніфести для Django додатка
+├── charts/
+│  └── django-app/
 │    ├── templates/
 │    ├── Chart.yaml
 │    └── values.yaml
 │
-└── Django/               # Вихідний код додатка
+└── Django/
     ├── app/
     ├── Dockerfile
     ├── Jenkinsfile
     ├── manage.py
-    ├── requirements.txt      # Залежності Python
+    ├── requirements.txt
     └── docker-compose.yaml
 ```
 
-## Етапи виконання (Інструкція)
+The `s3-backend` module provides Terraform state storage; `vpc` supplies networking; `ecr` supplies the image registry; `eks` includes the EBS CSI driver; `rds` configures the database; `jenkins` and `argo_cd` install the Helm-based automation stack. The Argo CD chart describes Prometheus, Grafana and the Django application. `Django/` contains application code and its build files.
 
-### 1. Підготовка середовища
-- Встановіть `terraform`, `kubectl`, `helm` та `aws-cli`.
-- Налаштуйте доступ до AWS (`aws configure`).
-- Ініціалізуйте проект:
-  ```powershell
-  terraform init
-  ```
+## Setup
 
-### 2. Розгортання інфраструктури
-Виконайте команду для створення всіх ресурсів в AWS:
+Install Terraform, kubectl, Helm and the AWS CLI. Configure AWS access with `aws configure`.
+
 ```powershell
+terraform init
 terraform apply
 ```
 
-### 3. Перевірка стану компонентів
-Після завершення (зазвичай 15-20 хв), перевірте статус подів у відповідних просторах імен:
+After provisioning, which took approximately 15–20 minutes in the original exercise, inspect the namespaces:
+
 ```powershell
 kubectl get all -n jenkins
 kubectl get all -n argocd
 kubectl get all -n monitoring
 ```
-![alt text](screenshots/01.png)
-![alt text](screenshots/02.png)
-![alt text](screenshots/03.png)
 
-### 4. Доступ до інструментів
-Використовуйте `port-forward` для доступу до UI (команди також будуть доступні в `terraform outputs`):
+![Cluster output 1](screenshots/01.png)
+![Cluster output 2](screenshots/02.png)
+![Cluster output 3](screenshots/03.png)
 
-| Інструмент | Команда для доступу | URL |
-| :--- | :--- | :--- |
-| **Jenkins** | `kubectl port-forward svc/jenkins 8080:80 -n jenkins` | http://localhost:8080 |
-| **Argo CD** | `kubectl port-forward svc/argo-cd-argocd-server 8081:443 -n argocd` | https://localhost:8081 |
-| **Grafana** | `kubectl port-forward svc/grafana 3000:80 -n monitoring` | http://localhost:3000 |
-| **Prometheus**| `kubectl port-forward svc/prometheus-server 9090:80 -n monitoring` | http://localhost:9090 |
+## Access the tools
 
-![alt text](screenshots/04.png)
+Port-forward commands are also included in Terraform outputs.
 
-![alt text](screenshots/05.png)
+| Tool | Command | URL |
+|---|---|---|
+| Jenkins | `kubectl port-forward svc/jenkins 8080:80 -n jenkins` | http://localhost:8080 |
+| Argo CD | `kubectl port-forward svc/argo-cd-argocd-server 8081:443 -n argocd` | https://localhost:8081 |
+| Grafana | `kubectl port-forward svc/grafana 3000:80 -n monitoring` | http://localhost:3000 |
+| Prometheus | `kubectl port-forward svc/prometheus-server 9090:80 -n monitoring` | http://localhost:9090 |
 
-![alt text](screenshots/06.png)
+![Tool screenshot 4](screenshots/04.png)
+![Tool screenshot 5](screenshots/05.png)
+![Tool screenshot 6](screenshots/06.png)
+![Tool screenshot 7](screenshots/07.png)
+![Tool screenshot 8](screenshots/08.png)
+![Tool screenshot 9](screenshots/09.png)
 
-![alt text](screenshots/07.png)
+Argo CD uses the `admin` account with an automatically generated password stored in a Kubernetes secret. The exercise's example Grafana credentials are `admin` / `admin123`.
 
-![alt text](screenshots/08.png)
+## Monitoring
 
-![alt text](screenshots/09.png)
+Node Exporter and cAdvisor collect node and container metrics. Grafana is configured with Prometheus as a data source.
 
-> **Credentials**:
-> - **Argo CD**: `admin` / (пароль генерується автоматично в секретах)
-> - **Grafana**: `admin` / `admin123`
+## Database variables
 
-## Моніторинг
-Стек моніторингу вже налаштований для збору метрик з вузлів (Node Exporter) та контейнерів (cAdvisor). В Grafana автоматично додано Prometheus як Data Source.
+| Variable | Description | Type | Default |
+|---|---|---|---|
+| `name` | Resource prefix for security, parameter and subnet groups | `string` | — |
+| `use_aurora` | Aurora cluster when true; RDS instance when false | `bool` | `false` |
+| `engine` | RDS database engine | `string` | `"postgres"` |
+| `engine_cluster` | Aurora database engine | `string` | `"aurora-postgresql"` |
+| `engine_version` | RDS engine version | `string` | `"14.7"` |
+| `engine_version_cluster` | Aurora engine version | `string` | `"15.3"` |
+| `instance_class` | Database instance size | `string` | `"db.t3.micro"` |
+| `allocated_storage` | RDS disk capacity in GB | `number` | `20` |
+| `db_name` | Initial database name | `string` | — |
+| `username` | Administrator login | `string` | — |
+| `password` | Sensitive administrator password | `string` | — |
+| `vpc_id` | VPC used for the security group | `string` | — |
+| `subnet_private_ids` | Private subnet-group IDs | `list(string)` | — |
+| `subnet_public_ids` | Public subnet IDs when publicly accessible | `list(string)` | — |
+| `publicly_accessible` | Allow database access from public networks | `bool` | `false` |
+| `multi_az` | Multi-AZ availability | `bool` | `false` |
+| `parameters` | Custom parameter-group settings | `map(string)` | `{}` |
 
-## Опис змінних
+## Configuration changes
 
----
-| Змінна | Опис | Тип | За замовчуванням |
-| :--- | :--- | :--- | :--- |
-| `name` | Назва ресурсу (буде використана як префікс для SG, PG, Subnet Group) | `string` | - |
-| `use_aurora` | Вибір типу БД: `true` — Aurora Cluster, `false` — RDS Instance | `bool` | `false` |
-| `engine` | Тип БД (двигун) для звичайного RDS (postgres, mysql, etc.) | `string` | `"postgres"` |
-| `engine_cluster` | Тип БД для Aurora (aurora-postgresql, aurora-mysql) | `string` | `"aurora-postgresql"` |
-| `engine_version` | Версія двигуна для RDS | `string` | `"14.7"` |
-| `engine_version_cluster` | Версія двигуна для Aurora | `string` | `"15.3"` |
-| `instance_class` | Клас потужності інстансу | `string` | `"db.t3.micro"` |
-| `allocated_storage` | Обсяг диска в ГБ (тільки для RDS) | `number` | `20` |
-| `db_name` | Назва бази даних при створенні | `string` | - |
-| `username` | Логін адміністратора | `string` | - |
-| `password` | Пароль адміністратора (Sensitive) | `string` | - |
-| `vpc_id` | ID VPC для створення Security Group | `string` | - |
-| `subnet_private_ids` | Список ID приватних підмереж для Subnet Group | `list(string)` | - |
-| `subnet_public_ids` | Список ID публічних підмереж (якщо `publicly_accessible = true`) | `list(string)` | - |
-| `publicly_accessible` | Чи дозволяти доступ до БД з публчних мереж | `bool` | `false` |
-| `multi_az` | Режим високої доступності (Multi-AZ) | `bool` | `false` |
-| `parameters` | Мапа кастомних параметрів для Parameter Group | `map(string)` | `{}` |
----
+Use `use_aurora` to select a cluster or ordinary RDS instance. Change `engine` or `engine_cluster` together with the corresponding `parameter_group_family_rds` or `parameter_group_family_aurora`. Adjust `instance_class` for CPU and memory capacity.
 
-## Як змінити конфігурацію
-
-1.  **Тип бази даних**: Використовуйте `use_aurora = true` для кластера Aurora (краще підходить для високих навантажень) або `use_aurora = false` для дешевших інстансів.
-2.  **Двигун (Engine)**: Змініть `engine` (для RDS) або `engine_cluster` (для Aurora). Також не забудьте оновити `parameter_group_family_rds` або `parameter_group_family_aurora` відповідно до версії.
-3.  **Клас інстансу**: Параметр `instance_class` дозволяє масштабувати ресурси (CPU/RAM).
-4.  **Параметри БД**: Модуль автоматично створює `Parameter Group`. Ви можете передати список параметрів через мапу `parameters`, і вони будуть додані до стандартних (`max_connections`, `log_statement`, `work_mem`).
+The module creates a parameter group and accepts custom entries through `parameters`, in addition to defaults such as `max_connections`, `log_statement` and `work_mem`.

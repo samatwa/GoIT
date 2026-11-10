@@ -1,7 +1,13 @@
 # goit-de-hw-06
 
-## Скрин генерації даних сенсорів та відправки даних в building_sensors з демонстрацією двох одночасних роботи двох запусків програми;
-![alt text](./ScreenShots/producers.png) 
+## Concurrent sensor-data generation
 
-## Скрин з демонстрацією того, що відфільтровані дані були послані у відповідні топіки.
-![alt text](./ScreenShots/kafka_topic_out.png)
+Two producer instances generate readings and send them to `building_sensors`.
+
+![Concurrent producers](./ScreenShots/producers.png)
+
+## Filtered-topic output
+
+Filtered records are sent to their corresponding Kafka topics.
+
+![Output topics](./ScreenShots/kafka_topic_out.png)

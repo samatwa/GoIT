@@ -1,14 +1,22 @@
 # goit-de-hw-05
 
-## Скрин трьох топіків:
-![1_create_topics.png](ScreenShots/1_create_topics.png)
+## Three Kafka topics
 
-## Скрин генерації даних сенсорів та відправки даних в building_sensors з демонстрацією двох одночасних роботи двох запусків програми:
-![2_sensor_produser_1.png](ScreenShots/2_sensor_produser_1.png)
-![2_sensor_produser_2.png](ScreenShots/2_sensor_produser_2.png)
+![Created topics](ScreenShots/1_create_topics.png)
 
-## Скрин отримання даних та тих даних, що будуть далі використані. Необхідні дані були послані у відповідні топіки:
-![3_data_processor.png](ScreenShots/3_data_processor.png)
+## Concurrent sensor producers
 
-## Скрин з результатом запису відфільтрованих даних:
-![4_alert_consumer.png](ScreenShots/4_alert_consumer.png)
+Two program instances generate sensor readings and send them to `building_sensors`.
+
+![First producer](ScreenShots/2_sensor_produser_1.png)
+![Second producer](ScreenShots/2_sensor_produser_2.png)
+
+## Processing and routing
+
+The processor receives readings, selects the required data and forwards it to the relevant topics.
+
+![Data processor](ScreenShots/3_data_processor.png)
+
+## Filtered output
+
+![Alert consumer output](ScreenShots/4_alert_consumer.png)

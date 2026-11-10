@@ -1,46 +1,26 @@
 # goit-algo2-hw-10
 
-# Завдання 1. Порівняння рандомізованого та детермінованого QuickSort
+## Task 1: randomized versus deterministic QuickSort
 
-![alt text](Figure_1.png)
+![QuickSort benchmark](Figure_1.png)
 
-Розмір масиву: 10000
-  * Рандомізований QuickSort: 0.0202 секунд
-  * Детермінований QuickSort: 0.0174 секунд
+| Array size | Randomized QuickSort, seconds | Deterministic QuickSort, seconds |
+|---:|---:|---:|
+| 10000 | 0.0202 | 0.0174 |
+| 50000 | 0.1092 | 0.1025 |
+| 100000 | 0.2241 | 0.2111 |
+| 500000 | 1.2488 | 1.2262 |
 
-Розмір масиву: 50000
-  * Рандомізований QuickSort: 0.1092 секунд
-  * Детермінований QuickSort: 0.1025 секунд
+Both variants had similar performance on these random arrays. The deterministic middle-pivot variant was slightly faster in every recorded test, with differences decreasing at larger sizes.
 
-Розмір масиву: 100000
-  * Рандомізований QuickSort: 0.2241 секунд
-  * Детермінований QuickSort: 0.2111 секунд
+Poor pivot choices can produce O(n²) behavior. Randomization reduces sensitivity to input order, although duplicate-heavy inputs also depend on the partition implementation.
 
-Розмір масиву: 500000
-  * Рандомізований QuickSort: 1.2488 секунд
-  * Детермінований QuickSort: 1.2262 секунд
+## Task 2: greedy class scheduling
 
-## Висновки
-1. Обидва алгоритми мають приблизно однакову ефективність на масивах зі випадковими числами. Різниця в часі для кожного тесту не перевищує ~5–7%.
+The sample schedule selects:
 
-2. Детермінований QuickSort трохи швидший у всіх тестах. Це пояснюється тим, що вибір середнього елемента як pivot часто працює добре на випадкових масивах, забезпечуючи збалансоване розбиття.
-
-3. Рандомізований QuickSort надійніший у гірших випадках, зокрема:
-
-  * коли вхідний масив вже відсортований,
-
-  * або коли всі елементи однакові.
-
-4. Якщо опорний елемент у детермінованому варіанті буде погано ділити масив (наприклад, завжди мінімальний або максимальний), то час зросте до O(n²). Рандомізація допомагає цього уникнути.
-
-# Завдання 2. Складання розкладу занять за допомогою жадібного алгоритму
-## Розклад занять:
-Наталія Шевченко, 29 років, email: n.shevchenko@example.com
-  * Викладає предмети: Біологія, Хімія
-
-Дмитро Бондаренко, 35 років, email: d.bondarenko@example.com
-  * Викладає предмети: Інформатика, Фізика
-
-Олександр Іваненко, 45 років, email: o.ivanenko@example.com
-  * Викладає предмети: Математика
-
+| Teacher | Age | Example email | Subjects |
+|---|---:|---|---|
+| Nataliia Shevchenko | 29 | n.shevchenko@example.com | Biology, Chemistry |
+| Dmytro Bondarenko | 35 | d.bondarenko@example.com | Computer Science, Physics |
+| Oleksandr Ivanenko | 45 | o.ivanenko@example.com | Mathematics |

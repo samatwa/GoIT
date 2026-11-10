@@ -1,46 +1,14 @@
 # goit-algo-hw-05
 
-Висновки до Завдання 3:
+## Task 3: substring-search benchmark
 
-# Порівняння часу виконання алгоритмів пошуку підрядка у статтях
+The original Ukrainian search strings are described here as a present substring ("search") and an absent substring ("delegation"). The benchmark inputs remain unchanged in the source files.
 
-## Тест 1: article1.txt
+| Article | Substring | Boyer–Moore time | KMP time | Rabin–Karp time |
+|---|---|---:|---:|---:|
+| article1.txt | Present | 0.02696789999026805 | 0.043457900057546794 | 0.11293509998358786 |
+| article1.txt | Absent | 0.7001314000226557 | 2.038023400004022 | 5.04281309992075 |
+| article2.txt | Present | 0.09996489994227886 | 0.2459911999758333 | 0.578131000045687 |
+| article2.txt | Absent | 1.0447633999865502 | 3.0047439999179915 | 7.44463739998173 |
 
-### Реальний підрядок: "пошук"
-- Boyer-Moore:
-  - Час виконання: 0.02696789999026805
-- KMP:
-  - Час виконання: 0.043457900057546794
-- Rabin-Karp:
-  - Час виконання: 0.11293509998358786
-
-### Вигаданий підрядок: "делегація"
-- Boyer-Moore:
-  - Час виконання: 0.7001314000226557
-- KMP:
-  - Час виконання: 2.038023400004022
-- Rabin-Karp:
-  - Час виконання: 5.04281309992075
-
-## Тест 2: article2.txt
-
-### Реальний підрядок: "пошук"
-- Boyer-Moore:
-  - Час виконання: 0.09996489994227886
-- KMP:
-  - Час виконання: 0.2459911999758333
-- Rabin-Karp:
-  - Час виконання: 0.578131000045687
-
-### Вигаданий підрядок: "делегація"
-- Boyer-Moore:
-  - Час виконання: 1.0447633999865502
-- KMP:
-  - Час виконання: 3.0047439999179915
-- Rabin-Karp:
-  - Час виконання: 7.44463739998173
-
-## Загальні висновки:
-- Boyer-Moore виявився найшвидшим алгоритмом на обох тестах для реального підрядка, але його час виконання збільшується для вигаданого підрядка.
-- KMP став другим за швидкістю на обох тестах для реального підрядка, але він також має зростаючий час виконання для вигаданого підрядка.
-- Rabin-Karp виявився найповільнішим алгоритмом на обох тестах, і його час виконання збільшується найбільше для вигаданого підрядка.
+Boyer–Moore was fastest in these tests, followed by KMP and Rabin–Karp. Each algorithm took longer for the absent substring. These recorded measurements describe the tested articles and inputs rather than a universal ranking.

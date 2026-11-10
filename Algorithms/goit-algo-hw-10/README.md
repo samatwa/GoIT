@@ -1,19 +1,14 @@
 # goit-algo-hw-10
- 
-# Опис задачі
-Реалізовано алгоритм пошуку визначеного інтеграла за допомогою методу Монте-Карло.\
-Виконано порівняльний аналіз результату, отриманого за допомогою цього алгоритму, з результатом, отриманим за допомогою функції **quad** з підмодуля **integrate** бібліотеки **SciPy**.
 
-## Результати
- **при num_pounts = 10000**:
- - **Integral using Monte Carlo 1**: 2.6951575965113133
- - **Integral using quad**: 2.666666666666667
- - **Difference**: 0.028490929844646296
+## Monte Carlo integration
 
- **при num_pounts = 100000**:
- - **Integral using Monte Carlo 2**: 2.671886515825384
- - **Integral using quad**: 2.666666666666667
- - **Difference**: 0.005219849158716983
+This task implements definite integration with Monte Carlo sampling and compares the result with `scipy.integrate.quad`.
 
-## Висновки
-Результати, отримані за допомогою методу Монте-Карло, близькі до результатів, отриманих за допомогою функції **quad**. При збільшенні кількості точок (**num_points**) метод Монте-Карло дає більш точні результати. Незначні відхилення можуть бути пов'язані з випадковим характером методу, але вони зменшуються зі збільшенням кількості точок. Це підтверджує ефективність і правильність реалізації методу Монте-Карло для обчислення визначених інтегралів. Метод Монте-Карло може бути особливо корисним для обчислення багатовимірних інтегралів або у випадках, коли аналітичне розв'язання є складним або неможливим.
+| Number of points | Monte Carlo integral | quad integral | Absolute difference |
+|---:|---:|---:|---:|
+| 10000 | 2.6951575965113133 | 2.666666666666667 | 0.028490929844646296 |
+| 100000 | 2.671886515825384 | 2.666666666666667 | 0.005219849158716983 |
+
+In these runs, increasing `num_points` produced a closer estimate. Small deviations are expected because sampling is random; convergence does not guarantee that every larger individual sample has a smaller error.
+
+Monte Carlo integration can also be useful for multidimensional integrals or cases where an analytical solution is difficult.

@@ -1,5 +1,5 @@
 # DeepLearning
-
-| Project | Source history |
-| --- | --- |
-| [vkuznetsov-capstone-project](vkuznetsov-capstone-project/) | [Original repository](https://github.com/samatwa/vkuznetsov-capstone-project) |
+ 
+| Project | Preserved history |
+|---|---|
+| [vkuznetsov-capstone-project](vkuznetsov-capstone-project/) | [History](https://github.com/samatwa/GoIT/tree/archive/vkuznetsov-capstone-project/master) |

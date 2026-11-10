@@ -1,96 +1,52 @@
 # goit-de-hw-04
-# Частина 1
 
-![alt text](part1_all_jobs.png)
+## Part 1
 
-## Опис Jobs:
-## Job 1 — Інференс схеми CSV
-Spark читає кілька рядків з файлу для визначення типів колонок, оскільки використано .option("inferSchema", "true").
-Легка операція, окремий Job для цього.
-## Job 2 — Читання CSV, фільтрація, селект, підготовка до shuffle (Map Stage)
-Spark повністю читає CSV-файл.
-Застосовує .where("final_priority < 3") та .select("unit_id", "final_priority").
-Потім готує дані для групування — це Map Stage.
-Результати діляться по ключу unit_id для подальшого shuffle.
-## Job 3 — Виконання shuffle та агрегація (Reduce Stage)
-Тут відбувається shuffle (перемішування даних між виконавцями за ключами unit_id).
-Далі Spark виконує .count() для кожної групи.
-Це Reduce Stage — збирання та підрахунок.
-## Job 4 — Фільтрація .where("count>2")
-Додаткова фільтрація вже після групування.
-Spark запускає окремий етап для застосування цього фільтру.
-## Job 5 — Збирання результатів (Collect)
-Після всіх трансформацій Spark збирає результати на драйвер для .collect().
+![Spark jobs for part 1](part1_all_jobs.png)
 
-# Частина 2. 
+The recorded Spark UI run shows these stages of work:
 
-![alt text](part2_all_jobs.png)
+1. Infer the CSV schema using `.option("inferSchema", "true")`.
+2. Read CSV, apply `.where("final_priority < 3")`, select `unit_id` and `final_priority`, and prepare the map stage.
+3. Shuffle by `unit_id` and aggregate each group's `count()`.
+4. Apply the post-aggregation filter `.where("count>2")`.
+5. Collect the final results to the driver.
 
-## Опис Jobs:
-## Job 1 — Інференс схеми CSV
-Як і раніше, Spark читає кілька рядків для визначення схеми.
-## Job 2 — Читання CSV, фільтрація, селект, підготовка до shuffle (Map Stage) для першого .collect()
-Повне читання даних.
-Фільтрація, селекція та підготовка до групування.
-## Job 3 — Shuffle + групування + count (Reduce Stage) для першого .collect()
-Shuffle та агрегація груп.
-## Job 4 — Збирання результатів (Collect)
-Spark збирає підраховані групи назад на драйвер для першого .collect().
-## Job 5 — Читання CSV, фільтрація, селект, shuffle (Map Stage) для другого .collect()
-Spark не кешує попередні обчислення!
-Він починає обчислення з самого початку.
-Знову читає файл, застосовує фільтри та готує дані до shuffle.
-## Job 6 — Shuffle + групування + count (Reduce Stage) для другого .collect()
-Знову shuffle та агрегація.
-## Job 7 — Додаткова фільтрація .where("count>2")
-Застосування фільтру після групування.
-## Job 8 — Збирання результатів (Collect)
-Другий виклик .collect() збирає результати на драйвер.
+Job boundaries and counts describe the recorded run and can vary with Spark execution settings.
 
-## Питання 1: Подумайте, чому при додаванні однієї проміжної дії nuek_processed.collect(), отримано аж на 3 Job більше?
-Відповідь:
-* Проміжне .collect() розриває DAG
-* Spark після кожного .collect() змушений перераховувати всі трансформації заново.
-* У другому прикладі Spark робить повне читання та групування двічі, що й додає 3 додаткові Jobs.
+## Part 2: two actions without caching
 
-# Частина 3.
-![alt text](part3_all_jobs.png)
+![Spark jobs for part 2](part2_all_jobs.png)
 
-## Опис Jobs:
-## Job 1 — Інференс схеми CSV
-Spark читає перші рядки CSV для визначення типів колонок.
-Це завжди окремий Job, коли вказано .option("inferSchema", "true").
-## Job 2 — Читання CSV, фільтрація, селекція, підготовка до shuffle (Map Stage)
-Spark повністю читає файл.
-Виконує фільтрацію .where("final_priority < 3").
-Вибирає потрібні колонки.
-Готує дані для групування — Map Stage, де дані діляться по ключу unit_id.
-## Job 3 — Shuffle та групування, підрахунок (Reduce Stage)
-Тут Spark виконує Shuffle, передаючи ключі unit_id між виконавцями.
-Далі рахує кількість записів для кожної групи — Reduce Stage.
-## Job 4 — Materialization для cache()
-Після завершення групування та підрахунку Spark зберігає результат у пам’яті або на диск.
-Це окремий Job для запису кешу.
-Важливо: cache не запускається самостійно, лише коли відбувається action, як .collect().
-## Job 5 — Перший .collect()
-Spark збирає обчислені та кешовані дані на драйвер.
-Даний Job працює вже на кешованих даних.
-## Job 6 — Додаткова фільтрація .where("count>2")
-Тепер Spark застосовує додатковий фільтр до кешованого результату.
-Працює тільки з кешем, не перечитує CSV.
-## Job 7 — Другий .collect()
-Збирає результат після фільтрації.
+The recorded run contains eight jobs:
 
-## Питання 2: Подумайте, чому при використанні cache() ми зменшили кількість Job?
-Відповідь:
-* Якщо не використовувати .cache(), кожен .collect() буде перераховувати всі попередні трансформації знову, включаючи читання CSV і groupBy (і створювати shuffle stages заново).
-* Використовуючи .cache(), Spark:
- - Один раз обчислює і зберігає результат.
- - При наступному .collect() використовує вже готовий кеш, а не повторює всю роботу.
- - Це значно зменшує кількість повторних Jobs і покращує продуктивність.
+1. CSV schema inference.
+2. CSV reading, filtering, selection and shuffle preparation for the first `.collect()`.
+3. Shuffle, grouping and count for the first action.
+4. Collection of the grouped results.
+5. Repeated reading, filtering, selection and shuffle preparation for the second action.
+6. Repeated shuffle and aggregation.
+7. The additional `.where("count>2")` filter.
+8. The second collection to the driver.
 
-## Висновки:
-* Кеш допомагає уникнути повторного виконання DAG і зайвих Jobs.
-* Але перше кешування само потребує додатковий Job
-* Додавання додаткового .collect() без кешу → кожен раз Spark виконує все заново → більше Jobs.
+### Why does an intermediate collect add work?
 
+The additional `nuek_processed.collect()` triggers an action. Without caching, subsequent actions can recompute the preceding transformations. In this example, reading and grouping occur twice, adding three recorded jobs.
+
+## Part 3: cached intermediate results
+
+![Spark jobs for part 3](part3_all_jobs.png)
+
+The recorded run contains seven jobs:
+
+1. Infer CSV column types.
+2. Read, filter and select the input; prepare grouping by `unit_id`.
+3. Shuffle, group and count.
+4. Materialize the cached result during execution.
+5. Perform the first `.collect()`.
+6. Apply `.where("count>2")` to the cached result.
+7. Perform the second `.collect()`.
+
+### Why does caching reduce repeated work?
+
+`cache()` is lazy and is materialized by an action. Once materialized, later actions can reuse the intermediate result instead of rereading and regrouping the CSV. Initial caching itself adds work, but avoids repeated upstream execution in this experiment.

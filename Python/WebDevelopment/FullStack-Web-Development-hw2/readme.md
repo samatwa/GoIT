@@ -1,13 +1,13 @@
-# ДЗ Тема: Основи технології  Docker
+# Homework: Docker fundamentals
 
-Створіть віртуальне оточення то встановіть необхідні бібліотеки
+Create a virtual environment and install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Запуск:
+Run the application:
 
-```bash 
+```bash
 python main.py
 ```

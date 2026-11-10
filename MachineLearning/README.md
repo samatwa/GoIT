@@ -1,5 +1,5 @@
 # MachineLearning
-
-| Project | Source history |
-| --- | --- |
-| [FinalProjectML](FinalProjectML/) | [Original repository](https://github.com/samatwa/FinalProjectML) |
+ 
+| Project | Preserved history |
+|---|---|
+| [FinalProjectML](FinalProjectML/) | [History](https://github.com/samatwa/GoIT/tree/archive/FinalProjectML/main) |

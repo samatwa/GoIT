@@ -1,20 +1,19 @@
-name: Import GoIT Projects
+name: Verify GoIT collection
 on:
   workflow_dispatch:
   push:
-    paths:
-      - .github/workflows/import-goit.yml
+    branches: [main]
+  pull_request:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  import:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Configure commit author
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - name: Import and verify pinned source snapshots
-        run: python tools/import_goit.py --push
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify preserved sources and English documentation
+        run: python tools/verify_collection.py
