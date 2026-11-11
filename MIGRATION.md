@@ -1,6 +1,6 @@
 # Repository migration
 
-Verified on November 10, 2026.
+Transfer verified on November 10, 2026. Repository cleanup verified on November 11, 2026.
 
 ## Layout
 
@@ -50,9 +50,9 @@ These 22 originals are intentionally retained as standalone repositories because
 - [goit-pythonweb-hw-10](https://github.com/samatwa/goit-pythonweb-hw-10)
 - [my-vite-project](https://github.com/samatwa/my-vite-project)
 
-## Original repositories selected for removal
+## Removed original repositories
 
-Each project below has a verified snapshot in the collection and a preserved Git history. Removal proceeds only after checking that Pages is still disabled and its refs have not changed. The list records the migration scope, not a claim that every deletion has already completed.
+All 62 original repositories listed below have been removed. Their project snapshots and Git histories remain in GoIT. The account now contains GoIT, Pets and the 22 standalone GitHub Pages repositories listed above.
 
 | Original repository | Collection directory | Preserved branch |
 |---|---|---|
